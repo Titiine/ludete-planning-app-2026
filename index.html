@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <meta name="theme-color" content="#fef9f0">
 <title>Lud'été 2026 · Planning Mensa · Tignes</title>
+<meta name="description" content="Planning interactif de Lud'été 2026 (Mensa France, Tignes). Hors-ligne, sans compte.">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAFS0lEQVR4nO3cy24cVRCH8R5rdrxCsuFVIISleRX8Gpk8SjLegWPzDIg1NymwAARiEa4hDIuDnElm/u2+1Kmq0/P9lEWkWN1lnc/V7SjO6t+/fu2AY9a73S56BiR1Fj0A8iIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQekddfxr89xHJsDEnFAIg5IxAFpHT0Ajnj+ycfqj+5/+NhtjNWrP39xuxn69TRxyKES4khhVBb7qiayevUHcQR7/unEMor7D2v1QRyRZmaxr0YifLcSxrAM86sVxBGjxlmaX5M4AtQoo8aViQMScXirtzbMr08crmqXYXsX4oBEHH581obhvYgDEnFAIg4nns8UqzsSByTigLTe8aMJyzXzcNkckIgDEnFAIg5IxAGJOJzce7hp7o7EAYk4IBGHH88ni8m9iAMScbjyWR5WdyEOb7X7MLw+cUAijgD1loftlVf//P6z4eUw3HdXF7YXvPeBcXNsjjC2Z2leRsfmyGDmCqmRRcHmiDfndOuV0bE5Uhm1QqpmURBHRj2VODRxizgg8R/jQ+KFFFIbcVw//TJ6hFPUQBylDPrw10AciJI9jv2FwfJwljqOwxrow1PqOBArbxxqSbA83CSNo78A+vCRNA5kkDGOIYuB5eEgXRzDT50+assVx9jzpo+qcsWBVBLFMW0NsDzqyRLHnDOmj0qyxIGEUsQx/0uf5VFDfBxW50of5uLjQFrBcdh+ubM8bEXGUeMs0/bx6OpJ9AijrXe7pf1oQsLPaPPsadd1j66eXDz4KHqWEcI2x832q+auPE0p4/D3+cXEUfv88vRxWENDffDdSkWqg1b6CIjD58s6fHn0F9BEH95xeJ5ZYB9Dzj5/H65x+J9WSB/DTz15H7xzGBt73pn78Isjasl73nfaSaftwymO2NdDn7vPOeOcffBYsTH/dBP24RFH+HeVtWewOtdsfVSPI0MZRaVJbE80VR88VmapcZZ5+qgbR561UdjOU+8Uk/RRMY5sZRRWU9U+vwx98FiZwufkwvuoFUfOtVHMnM3zzGL7qBJH5jKKyRP6n1ZgHzxWRog6p6j72seRf20UY+eM3fAhdzeOo5UyiuHThr8bhsywevnbj1bXutl+bXUpT++dv9v/AZtnW5dBBrl4cO52L9457pCqjM53HrM4Gl0bXe/k2coo3KayiaPdMoqj8+cso/CZjcfKcZnLKBwmNIij9bVR7H8W+csoas85N45llFGUz6WVMoqq0/JYeUNbZRT1Zl69fDH97zluLpezNrqu+/ydL6JHmO7i/XPza07fHJSRyuZ6a35NHitd134ZhXkfE+NY0tpYRhmFbR9T4qCMzAz7OOnHyvLKKKz6GB3HYtbGUssoTPoYFwdlNGR+HyPioIzmzOzj5N45TqeMYk4fQ+NYxto4tTKKyX0MioMyWjetj1N5rJxyGcWEPu6OYwFrgzKKsX3cEQdlLMyoPs523a7nV7UhnVDGoc31tv/Qb3/1bY7PLr9xm7gGylAeX18O+TAZB2Us25A+lvndCmUMcWcfx+Noem1QxnD9fRyJgzJOSk8fi3qsUMY0qo+342h3bVDGHEf7eCMOyjhlh328joMy8FYfzb9zUIat/T7+j6PRtUEZNdz2cdZRBg6UPlZ/v/ihxTgow8Hq25++j54BSTX/Qop6iAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAek/hslWhke6qooAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Lud'été">
 <style>
   :root {
     --cream: #fef9f0;
@@ -123,6 +129,10 @@
   }
   .period-fab:active { transform: scale(.96); }
   .period-fab.hidden { display: none; }
+  /* Bouton "remonter en haut" (apparaît au défilement) */
+  .back-top { position: fixed; right: max(16px, calc(50vw - 380px + 16px)); bottom: 24px; z-index: 46; width: 42px; height: 42px; border-radius: 50%; background: var(--paper); color: var(--burgundy); border: 1px solid var(--line); box-shadow: var(--shadow-lg); font-size: 1.3rem; font-weight: 700; cursor: pointer; opacity: .92; transition: bottom .18s; display: flex; align-items: center; justify-content: center; }
+  .back-top:active { transform: scale(.94); }
+  .back-top.hidden { display: none; }
 
   /* Voile + feuille (bottom sheet) du menu thématique */
   .sheet-bg { position: fixed; inset: 0; background: rgba(40,30,30,.38); z-index: 92; }
@@ -175,7 +185,15 @@
   .daychip.noact { opacity: .4; cursor: default; }
   .daychip.today { border-color: var(--gold-deep); }
   .daychip.today .dow::after { content: " ·auj"; color: var(--gold-deep); text-transform: none; letter-spacing: 0; }
-  .daychip.nowchip { display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.84rem; color: var(--gold-deep); border-color: var(--gold-deep); background: var(--gold-soft, var(--ivory)); min-width: 78px; }
+  /* Colonne « Maintenant » + « Semaine » empilés, à gauche du daybar */
+  /* Ligne "Aller à maintenant" : lien texte fin, sous la barre des jours (pendant l'événement) */
+  .now-line { text-align: center; margin: 6px 0 2px; }
+  .now-link { border: none; background: none; padding: 0; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; font-weight: 700; color: var(--gold-deep); text-decoration: none; }
+  .now-link:active { opacity: .6; }
+  .day-lead { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; align-self: stretch; }
+  .day-lead .daychip { flex: 1; min-width: 96px; margin: 0; }
+  .day-lead .daychip.nowchip, .day-lead .daychip.allchip { padding: 6px 10px; }
+  .daychip.nowchip { display: flex; align-items: center; justify-content: center; gap: 3px; font-weight: 700; font-size: 0.72rem; color: var(--gold-deep); border-color: var(--gold-deep); background: var(--gold-soft, var(--ivory)); min-width: 0; padding: 6px 11px; }
   @keyframes nowpulse { 0% { box-shadow: 0 0 0 0 rgba(122, 27, 51, .45); } 100% { box-shadow: 0 0 0 14px rgba(122, 27, 51, 0); } }
   .pulse { animation: nowpulse 1s ease-out 2; }
   .daychip.allchip { display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.84rem; color: var(--ink); min-width: 78px; }
@@ -532,12 +550,28 @@
   .agechip.teen { background: #f7e3cf; color: #9a5b25; }
   .agechip.all { background: #e0ebe5; color: #527060; }
 
+  .plan-note { font-size: 0.74rem; line-height: 1.35; color: var(--muted); background: var(--gold-soft, var(--ivory)); border: 1px solid var(--gold); border-radius: 10px; padding: 5px 11px; margin: 0 2px 10px; }
+  .plan-note > summary { cursor: pointer; list-style: none; padding: 2px 18px 2px 0; position: relative; color: var(--gold-deep); font-weight: 600; }
+  .plan-note > summary::-webkit-details-marker { display: none; }
+  .plan-note > summary::after { content: "▸"; position: absolute; right: 2px; top: 2px; transition: transform .18s; }
+  .plan-note[open] > summary::after { transform: rotate(90deg); }
+  .plan-note .pn-body { padding: 4px 0 2px; }
+  /* Carte Version : « Mises à jour » repliable */
+  .upd-note { font-size: 0.82rem; color: var(--muted); margin: 0 0 8px; }
+  .upd-note > summary { cursor: pointer; list-style: none; position: relative; padding-right: 18px; }
+  .upd-note > summary::-webkit-details-marker { display: none; }
+  .upd-note > summary::after { content: "▸"; position: absolute; right: 2px; top: 0; transition: transform .18s; }
+  .upd-note[open] > summary::after { transform: rotate(90deg); }
+  .upd-note .upd-body { margin-top: 4px; }
   .rotate-hint {
     display: none; align-items: center; gap: 8px; margin: 0 0 12px;
     background: var(--gold-soft); border: 1px solid var(--gold); color: var(--gold-deep);
     border-radius: 12px; padding: 9px 13px; font-size: 0.82rem; font-weight: 600;
   }
-  @media (orientation: portrait) { .rotate-hint.on { display: flex; } }
+  .rotate-hint span { flex: 1; }
+  .hint-x { flex: 0 0 auto; border: none; background: transparent; color: inherit; font-size: 1.2rem; line-height: 1; cursor: pointer; opacity: .7; padding: 0 2px; }
+  .hint-x:hover { opacity: 1; }
+  @media (orientation: portrait) { .rotate-hint.on:not(.dismissed) { display: flex; } }
 
   /* ============ SÉRIES (piqueur) ============ */
   .seriesbtn {
@@ -1042,6 +1076,7 @@
     </svg>
   </header>
 
+  <div class="now-line print-hide hidden" id="nowLine"><button class="now-link" id="nowLink" title="Aller au créneau en cours ou à venir aujourd'hui">📍 Aller à l'heure actuelle →</button></div>
   <div class="navwrap nav-collapsed" id="navwrap">
     <nav class="tabs" id="tabs">
       <div class="tab-side left">
@@ -1082,6 +1117,7 @@
   </aside>
   <button class="nav-fab print-hide" id="navToggle" aria-expanded="false" title="Menu (vue par thème)">☰</button>
   <button class="collapse-btn period-fab print-hide hidden" id="periodsFab" title="Replier / déplier Matin, Après-midi, Soirée">⊟ Replier</button>
+  <button class="back-top print-hide hidden" id="backTop" title="Remonter en haut" aria-label="Remonter en haut">↑</button>
   <nav class="infos-rail hidden print-hide" id="infosRail" aria-label="Sommaire d'Infos">
     <button class="rail-handle" id="railToggle" title="Réduire / afficher le sommaire">›</button>
     <div class="rail-dots" id="railDots"></div>
@@ -1105,7 +1141,8 @@
     </div>
 
     <div class="filters" id="filters"></div>
-    <p class="rotate-hint print-hide" id="rotateHint">📱↻ Astuce : tournez le téléphone à l'horizontale pour voir les colonnes en grand.</p>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.</div></details>
+    <p class="rotate-hint print-hide" id="rotateHint"><span>📱↻ Astuce : tournez le téléphone à l'horizontale pour voir les colonnes en grand.</span><button class="hint-x" id="rotateHintX" title="Ne plus afficher" aria-label="Fermer">×</button></p>
     <div id="progContent" class="list"></div>
   </section>
 
@@ -1127,6 +1164,7 @@
     </label>
     <div class="filters print-hide" id="roomsFilters"></div>
     <p class="rg-hint print-hide">🧒 ajoute au <strong>programme enfant</strong> · ⭐ ajoute à <strong>mon agenda</strong> - un bouton allumé = déjà ajouté.</p>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.</div></details>
     <div id="roomsContent"></div>
   </section>
   <div class="hscroll print-hide" id="hscroll" title="Faire défiler les salles vers la gauche ou la droite"><div class="hthumb" id="hthumb"></div></div>
@@ -1302,7 +1340,7 @@
           <h4 class="mini-h">🎟️ Comment venir</h4>
           <ul class="faq-ul">
             <li>Une seule condition&nbsp;: <strong>être invité·e par un membre</strong> (probablement la personne qui t'a partagé ce planning&nbsp;!). La seule chose à payer est l'<strong>inscription</strong>&nbsp;: <strong>20&nbsp;€</strong> pour le membre (tarif subventionné par l'asso), <strong>60&nbsp;€</strong> par invité·e adulte, <strong>gratuit pour les mineurs</strong>.</li>
-            <li>🔗 <a href="#" target="_blank" rel="noopener"><strong>Lien officiel de l'événement</strong></a> (infos &amp; inscription).</li>
+            <li>🔗 <a href="https://mensa-france.net/ludete/" target="_blank" rel="noopener"><strong>Lien officiel de l'événement</strong></a> (infos &amp; inscription).</li>
           </ul>
           <h4 class="mini-h">🛏️🚗 Se loger &amp; se déplacer</h4>
           <ul class="faq-ul">
@@ -1443,10 +1481,33 @@
     <div class="info-card" id="versionCard">
       <h2 data-rail="Version">🗓️ Version du planning</h2>
       <p style="font-size:.86rem;margin:4px 0 8px">Cette appli suit le <strong>planning Tignespace du <span id="planningVer">01/07/2026</span></strong>. Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été <strong>ajoutées</strong> par rapport à la version précédente de l'appli.</p>
+      <details class="upd-note"><summary>🔄 <strong>Mises à jour</strong>&nbsp;: tes favoris sont toujours conservés.</summary><div class="upd-body">Le planning est mis à jour dès qu'une nouvelle version nous est transmise (au mieux le soir pour le lendemain). Des changements de dernière minute décidés sur place peuvent ne pas encore y figurer.</div></details>
       <details class="faq-section"><summary>Voir les <strong id="newCount">0</strong> ajouts de cette version</summary>
         <div style="margin:8px 0"><button class="cta-btn" data-goto-new>🆕 Les voir dans le Planning</button></div>
         <div id="newActs" style="font-size:.85rem;line-height:1.5"></div>
       </details>
+    </div>
+
+    <div class="info-card">
+      <h2 data-rail="Nouveau">✨ Nouveautés</h2>
+      <details class="faq"><summary id="whatsNewTitle">Quoi de neuf&nbsp;?</summary>
+        <ul class="info-list" id="whatsNew" style="margin-top:6px"></ul>
+        <button class="ghost-btn" id="changelogBtn" style="margin-top:10px">➕ Voir l'historique des versions</button>
+      </details>
+    </div>
+
+    <div class="info-card" id="installCard">
+      <h2 data-rail="Emporter">📲 Emporter &amp; partager</h2>
+      <p style="font-size:.86rem;margin:4px 0 8px">Une fois ouverte, l'appli marche déjà <strong>hors-ligne</strong>. Pour la garder ou la faire passer&nbsp;:</p>
+      <ul class="faq-ul">
+        <li>📱 <strong>Sur l'écran d'accueil</strong> (recommandé)&nbsp;: dans ton navigateur, menu <strong>Partager</strong> → «&nbsp;Sur l'écran d'accueil&nbsp;». L'appli s'installe comme une vraie app (icône + plein écran).</li>
+        <li>↗️ <strong>Partager</strong>&nbsp;: envoie le <strong>lien</strong> de l'appli à quelqu'un (mieux que le fichier&nbsp;: il s'ouvre direct dans son navigateur).</li>
+        <li>💾 <strong>En fichier</strong>&nbsp;: télécharge une copie à rouvrir même sans connexion.</li>
+      </ul>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="cta-btn" id="shareAppBtn">↗️ Partager l'appli</button>
+        <button class="ghost-btn" id="dlAppBtn">💾 Télécharger (.html)</button>
+      </div>
     </div>
 
     <div class="info-card" id="dataCard">
@@ -1484,14 +1545,6 @@
           <li>Sur l'autre appareil, ouvrez cette appli, touchez <strong>Importer</strong> et cherchez le fichier <strong>qui s'appelle à peu près <code>mes-favoris-ludete-2026.json</code></strong> (parfois suivi d'un numéro, ex. <code>mes-favoris-ludete-2026&nbsp;(1).json</code>, si vous l'avez téléchargé plusieurs fois), <em>sauf si vous l'avez renommé</em>.</li>
           <li>Vos ⭐ agenda, 🧒 enfant, ❤️ et 🧡 coups de cœur sont <strong>tous</strong> rétablis. L'import <strong>remplace</strong> les favoris déjà présents sur l'appareil (on vous demande confirmation s'il y en a).</li>
         </ol>
-      </details>
-    </div>
-
-    <div class="info-card">
-      <h2 data-rail="Nouveau">✨ Nouveautés</h2>
-      <details class="faq"><summary id="whatsNewTitle">Quoi de neuf&nbsp;?</summary>
-        <ul class="info-list" id="whatsNew" style="margin-top:6px"></ul>
-        <button class="ghost-btn" id="changelogBtn" style="margin-top:10px">➕ Voir l'historique des versions</button>
       </details>
     </div>
 
@@ -1533,7 +1586,7 @@
 
     <p class="madeby">Made with <span class="heart">❤</span> by Titiine <span style="color:var(--muted);font-size:.82em">(8467)</span></p>
     <p style="text-align:center;margin:4px 0 0"><a href="#" id="licLink" style="color:var(--muted);font-size:.78rem;text-decoration:underline">📜 License</a></p>
-    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v127 - 2026-07-03</p>
+    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v146 - 2026-07-05</p>
   </section>
 
 </div>
@@ -1862,6 +1915,8 @@
   }
   function savePrefs() { try { localStorage.setItem(LS_PREFS, JSON.stringify(prefs)); } catch (e) {} }
   let prefs = loadPrefs();
+  let rotateHintDismissed = false; try { rotateHintDismissed = !!localStorage.getItem("ludete2026_seenrotate"); } catch (e) {}
+  let planNoteClosed = false; try { planNoteClosed = !!localStorage.getItem("ludete2026_plannote_closed"); } catch (e) {}
   // Migration v101 : l'auto-chargement du chat passe à « off » pour tout le monde
   // (l'ancien défaut « on » traîne dans les préférences enregistrées). Une seule fois ;
   // le réactiver dans Réglages › Chat tient ensuite normalement.
@@ -2000,9 +2055,10 @@
     return hay.includes(query);
   }
 
+  function allChipHTML(activeDay) { return `<div class="daychip allchip ${activeDay==='all'?'active':''}" data-day="all">Semaine</div>`; }
   function daybarHTML(activeDay, withAll) {
     const todayIso = new Date().toISOString().slice(0, 10);
-    const all = withAll ? `<div class="daychip allchip ${activeDay==='all'?'active':''}" data-day="all">Semaine</div>` : "";
+    const all = withAll ? allChipHTML(activeDay) : "";
     return all + DAYS.map((d, i) => {
       const has = activities.some(a => a.day === i);
       return `<div class="daychip ${i===activeDay?'active':''} ${d.iso===todayIso?'today':''}" data-day="${i}" ${d.iso===todayIso?'title="Aujourd’hui"':''}>
@@ -2017,23 +2073,44 @@
     return DAYS.some(d => d.iso === todayIso)
       ? `<div class="daychip nowchip" data-nowjump title="Aller au créneau en cours ou à venir">📍 Maintenant</div>` : "";
   }
-  function renderDaybar() { $("#daybar").innerHTML = nowChipHTML() + daybarHTML(curDay, true); }
+  function eventIsNow() { const t = new Date().toISOString().slice(0, 10); return DAYS.some(d => d.iso === t); }
+  function renderDaybar() {
+    $("#daybar").innerHTML = daybarHTML(curDay, true);
+    const nl = $("#nowLine"); if (nl) nl.classList.toggle("hidden", !eventIsNow());
+  }
   // Saute au jour courant puis fait défiler jusqu'au créneau en cours (ou au prochain)
-  function jumpToNow() {
-    const idx = pickInitialDay();
-    curDay = idx; curFilter = "all"; renderProg();
+  // Fait défiler jusqu'à l'activité en cours (ou à venir) du jour, dans un conteneur donné
+  function scrollToNowEl(containerSel, dayIdx, extraFilter) {
     const now = new Date().toTimeString().slice(0, 5);
-    const pool = activities.filter(a => a.day === idx).sort(byTime);
+    let pool = activities.filter(a => a.day === dayIdx && a.start);
+    if (extraFilter) pool = pool.filter(extraFilter);
+    pool.sort(byTime);
     const target = pool.find(a => (a.end || a.start || "") >= now) || pool[pool.length - 1];
     if (!target) return;
     requestAnimationFrame(() => {
-      const el = document.querySelector(`#progContent [data-id="${target.id}"]`);
+      const el = document.querySelector(`${containerSel} [data-id="${target.id}"]`);
       if (!el) return;
-      // Ouvre la demi-journée si elle est repliée
       const det = el.closest("details"); if (det) det.open = true;
       el.scrollIntoView({ behavior: "smooth", block: "center" });
       el.classList.add("pulse"); setTimeout(() => el.classList.remove("pulse"), 2200);
     });
+  }
+  // "Aller à l'heure actuelle" : reste dans la vue courante (Planning ou Familles), sinon ouvre le Planning
+  function jumpToNow() {
+    const idx = pickInitialDay();
+    if (curTab === "rooms") {
+      curRoomsDay = idx; renderRooms();
+      scrollToNowEl("#roomsContent", idx, kidsOnly ? kidsAllowed : null);
+    } else if (curTab === "agenda") {
+      agendaDay = idx; renderAgenda();
+      scrollToNowEl("#agendaContent", idx, a => favs.has(a.id));
+    } else if (curTab === "kid") {
+      kidDay = idx; renderKid();
+      scrollToNowEl("#kidContent", idx, a => kidFavs.has(a.id));
+    } else {
+      curDay = idx; curFilter = "all"; setTab("prog");
+      scrollToNowEl("#progContent", idx, null);
+    }
   }
 
   // ----- Âge : analyse de la limite et libellé "famille" -----
@@ -2172,6 +2249,7 @@
 
     // Astuce "tourner le téléphone" : seulement en mode Colonnes (visible en portrait via CSS)
     $("#rotateHint").classList.toggle("on", curLayout === "grid");
+    if (rotateHintDismissed) $("#rotateHint").classList.add("dismissed");
 
     const box = $("#progContent");
     box.className = "";
@@ -2499,7 +2577,7 @@
     if (!mine.length) { box.innerHTML = empty; return; }
     if (view === "week") {
       const sparse = mine.length <= (kind === "kid" ? 6 : 4);
-      const nudge = sparse ? `<div class="sparse-nudge print-hide"><span>🎲 <strong>Ho ho ho, c'est un peu vide par ici&nbsp;!</strong> Tu veux tenter de le remplir avec des activités au hasard&nbsp;?</span><button class="cta-btn" data-surprise>🎲 Compose un planning surprise</button></div>` : "";
+      const nudge = sparse ? `<div class="sparse-nudge print-hide"><span>🎲 <strong>C'est un peu vide par ici&nbsp;!</strong> Envie que je te compose un programme surprise&nbsp;?</span><button class="cta-btn" data-surprise="${kind}">🎲 Planning surprise</button></div>` : "";
       box.innerHTML = `<p class="print-hide" style="margin:0 2px 8px;font-size:.8rem;color:var(--muted)">${intro}</p>` + nudge + weekGridHTML(mine, kind);
       return;
     }
@@ -2531,7 +2609,7 @@
     $("#clearAgendaLink").classList.toggle("hidden", !favs.size);
     renderFavList($("#agendaContent"), mine, "perso", agendaView,
       `Vous avez sélectionné <strong>${mine.length}</strong> activité(s) sur la semaine.`,
-      emptyState("⭐", "Votre agenda est vide", "Touchez l'étoile ☆ d'une activité pour l'ajouter ici.", `<div class="empty-actions"><button class="cta-btn" data-goto="tab:prog">🗓️ Remplir depuis le Planning</button><button class="ghost-btn" data-surprise>🎲 Au hasard</button></div>`), agendaDay);
+      emptyState("⭐", "Votre agenda est vide", "Touchez l'étoile ☆ d'une activité pour l'ajouter ici.", `<div class="empty-actions"><button class="cta-btn" data-goto="tab:prog">🗓️ Remplir depuis le Planning</button><button class="ghost-btn" data-surprise="perso">🎲 Pas d'idée ? Compose-moi un planning surprise</button></div>`), agendaDay);
     updateFsBtn();
   }
 
@@ -2546,7 +2624,7 @@
     $("#clearKidLink").classList.toggle("hidden", !kidFavs.size);
     renderFavList($("#kidContent"), mine, "kid", kidView,
       `<strong>${mine.length}</strong> activité(s) dans le programme de l'enfant.`,
-      emptyState("🧒", "Programme enfant vide", "Touchez le bouton 🧒 d'une activité pour composer le programme de l'enfant.", `<div class="empty-actions"><button class="cta-btn" data-goto="tab:rooms">👪 Remplir depuis Familles</button><button class="ghost-btn" data-surprise>🎲 Au hasard</button></div>`), kidDay);
+      emptyState("🧒", "Programme enfant vide", "Touchez le bouton 🧒 d'une activité pour composer le programme de l'enfant.", `<div class="empty-actions"><button class="cta-btn" data-goto="tab:rooms">👪 Remplir depuis Familles</button><button class="ghost-btn" data-surprise="kid">🎲 Pas d'idée ? Compose-moi un programme surprise</button></div>`), kidDay);
     updateFsBtn();
   }
 
@@ -2660,7 +2738,69 @@
   }
 
   const CHANGELOG = [
-    ["v127 - actuelle", [
+    ["v146 - actuelle", [
+      ["Carte Version : la note « Mises à jour » est repliable (l'essentiel « favoris conservés » reste visible, le détail se déplie).", "infos:versionCard"],
+    ]],
+    ["v145", [
+      "« Aller à l'heure actuelle » reste dans la vue courante (dans Familles il ne renvoie plus au Planning) et saute au bon créneau.",
+    ]],
+    ["v144", [
+      "Nouveau bouton « ↑ » flottant : dès qu'on défile un peu, il permet de remonter en haut de la page en un clic.",
+    ]],
+    ["v143", [
+      "Lien « Aller à l'heure actuelle » : plus de soulignement, flèche → de retour.",
+    ]],
+    ["v142", [
+      "« 📍 Aller à l'heure actuelle » remonte tout en haut, au-dessus des onglets : un raccourci visible partout pendant l'événement (il ouvre le Planning au bon créneau).",
+    ]],
+    ["v141", [
+      "Le lien « maintenant » du Planning se dit « 📍 Aller à l'heure actuelle » (plus explicite).",
+    ]],
+    ["v140", [
+      "Planning surprise ciblé : depuis Mon agenda il compose l'agenda adulte, depuis Mon enfant il compose le programme enfant (depuis le cockpit, les deux). Wording « Pas d'idée ? Compose-moi… » remis.",
+    ]],
+    ["v139", [
+      "Planning : le lien « maintenant » passe sous le titre du jour et devient « 📍 Ça se passe maintenant → ».",
+      "Mon agenda / Mon enfant : « Au hasard » devient « 🎲 Planning surprise » (wording plus clair et cohérent).",
+    ]],
+    ["v138", [
+      "Le gros bouton « Maintenant » devient un simple lien texte « 📍 Aller à maintenant », discret, sous la barre des jours (pendant l'événement).",
+    ]],
+    ["v137", [
+      ["Bouton « Télécharger l'appli » réparé : il se recopie sans dépendre du réseau (marche aussi ouvert en fichier). Message clair quand on est dans un navigateur intégré (Messenger/WhatsApp) qui bloque les téléchargements.", "infos:installCard"],
+    ]],
+    ["v136", [
+      "Infos : « Nouveautés » rapprochée juste sous « Version du planning ».",
+    ]],
+    ["v135", [
+      "Infos : « Version du planning » remonte au-dessus de « Emporter & partager ».",
+    ]],
+    ["v134", [
+      "L'astuce « tourne ton téléphone » a une croix pour la fermer définitivement.",
+      "L'avertissement « Planning indicatif » est repliable (et se souvient s'il est fermé).",
+      "Planning : les boutons « Maintenant » et « Semaine » sont empilés à gauche de la barre des jours (gain de place).",
+    ]],
+    ["v133", [
+      ["Avertissement « Planning indicatif » ajouté en haut du Planning et de Familles : les changements de dernière minute peuvent ne pas encore y figurer.", "tab:prog"],
+    ]],
+    ["v132", [
+      "Ajout d'un compteur de visites anonyme (GoatCounter, sans cookie) : il ne compte que les ouvertures en ligne et n'a aucun impact hors-ligne.",
+    ]],
+    ["v131", [
+      ["Bouton « ↗️ Partager l'appli » (Infos) : envoie le lien via le partage du téléphone (WhatsApp, SMS, mail…), avec repli « copier le lien ».", "infos:installCard"],
+      ["Carte Version du planning : politique de mise à jour précisée (favoris conservés).", "infos:versionCard"],
+    ]],
+    ["v130", [
+      "La pastille « 📍 Maintenant » du Planning est plus compacte (elle prenait autant de place que « Semaine »).",
+    ]],
+    ["v129", [
+      ["Lien officiel de l'événement corrigé : mensa-france.net/ludete.", "infos:desc-ext"],
+      ["Nouvelle carte « 📲 Emporter l'appli » (Infos) : ajout à l'écran d'accueil + téléchargement d'une copie hors-ligne.", "infos:installCard"],
+    ]],
+    ["v128", [
+      "iOS : icône et titre pour « Ajouter à l'écran d'accueil » (lance l'appli en plein écran, comme une vraie app).",
+    ]],
+    ["v127", [
       "Fichier allégé (~540 → ~440 Ko) : les captures intégrées ont été recompressées, sans perte visible.",
     ]],
     ["v126", [
@@ -3457,23 +3597,33 @@
     }
     return chosen;
   }
-  function renderRandomPlanner() {
-    return `<p style="font-size:.9rem;margin:0 0 12px">Choisis une <strong>ambiance</strong> : je te compose un <strong>agenda ⭐</strong> (et un <strong>programme enfant 🧒</strong>) au hasard, <strong>sans chevauchement d'horaires</strong>.</p>
+  function renderRandomPlanner(target) {
+    const what = target === "kid" ? "le <strong>programme enfant 🧒</strong>"
+      : target === "perso" ? "ton <strong>agenda ⭐</strong>"
+      : "un <strong>agenda ⭐</strong> (et un <strong>programme enfant 🧒</strong>)";
+    return `<p style="font-size:.9rem;margin:0 0 12px">Choisis une <strong>ambiance</strong> : je te compose ${what}, <strong>sans chevauchement d'horaires</strong>.</p>
       <div class="prof-grid">` +
       Object.keys(PROFILES).map(k => { const p = PROFILES[k]; return `<button class="prof-card" data-profile="${k}"><span class="prof-e">${p.e}</span><strong>${esc(p.label)}</strong><small>${esc(p.desc)}</small></button>`; }).join("") +
       `</div><p style="font-size:.78rem;color:var(--muted);margin:12px 0 0">⚠️ Ça <strong>remplace</strong> ta sélection actuelle. Tu pourras tout retoucher ensuite (ou relancer pour un autre tirage).</p>`;
   }
-  function openRandomPlanner() { openModal("🎲 Planning surprise", renderRandomPlanner()); }
+  let surpriseTarget = "both";
+  function openRandomPlanner(target) {
+    surpriseTarget = (target === "perso" || target === "kid") ? target : "both";
+    const title = surpriseTarget === "kid" ? "🎲 Programme enfant surprise"
+      : surpriseTarget === "perso" ? "🎲 Agenda surprise" : "🎲 Planning surprise";
+    openModal(title, renderRandomPlanner(surpriseTarget));
+  }
   function generateSurprise(profileKey) {
     const p = PROFILES[profileKey] || PROFILES.mixte;
-    if ((favs.size || kidFavs.size) && !confirm("Composer un planning surprise ?\nÇa remplace ta sélection actuelle (agenda ⭐ + enfant 🧒).")) return;
-    const adult = buildPlan(activities.filter(a => a.start), p.cats, 2);
-    favs = new Set(adult.map(a => a.id)); persistFavs();
-    const kid = buildPlan(activities.filter(a => a.start && kidsAllowed(a)), p.cats, 2);
-    kidFavs = new Set(kid.map(a => a.id)); persistKidFavs();
+    const doPerso = surpriseTarget !== "kid", doKid = surpriseTarget !== "perso";
+    const willReplace = (doPerso && favs.size) || (doKid && kidFavs.size);
+    if (willReplace && !confirm("Composer une sélection surprise ?\nÇa remplace ta sélection actuelle.")) return;
+    const msg = [];
+    if (doPerso) { const adult = buildPlan(activities.filter(a => a.start), p.cats, 2); favs = new Set(adult.map(a => a.id)); persistFavs(); msg.push(`${favs.size} ⭐`); }
+    if (doKid) { const kid = buildPlan(activities.filter(a => a.start && kidsAllowed(a)), p.cats, 2); kidFavs = new Set(kid.map(a => a.id)); persistKidFavs(); msg.push(`${kidFavs.size} 🧒`); }
     updateBadges(); closeModal();
-    toast(`🎲 Planning « ${p.label} » : ${favs.size} ⭐ · ${kidFavs.size} 🧒`);
-    agendaDay = "all"; setTab("agenda");
+    toast(`🎲 « ${p.label} » : ${msg.join(" · ")}`);
+    if (doKid && !doPerso) { kidDay = "all"; setTab("kid"); } else { agendaDay = "all"; setTab("agenda"); }
   }
 
   // ---------- Export / Import des favoris ----------
@@ -3604,6 +3754,7 @@
       if (cd) { cd.open = true; requestAnimationFrame(() => cd.scrollIntoView({ behavior: "smooth", block: "center" })); }
     }
   });
+  $("#nowLink") && $("#nowLink").addEventListener("click", jumpToNow);
   $("#daybar").addEventListener("click", e => {
     const nj = e.target.closest("[data-nowjump]"); if (nj) { jumpToNow(); return; }
     const c = e.target.closest(".daychip"); if (!c) return;
@@ -3819,6 +3970,45 @@
   $("#clearKidLink").addEventListener("click", clearKidFavs);
   $("#printBtn").addEventListener("click", () => window.print());
   $("#printKidBtn").addEventListener("click", () => window.print());
+  const CANONICAL_URL = "https://titiine.github.io/ludete-planning-app-2026/";
+  function appShareUrl() { return location.protocol.startsWith("http") ? location.href.split(/[?#]/)[0] : CANONICAL_URL; }
+  $("#shareAppBtn") && $("#shareAppBtn").addEventListener("click", async () => {
+    const url = appShareUrl();
+    const text = "📅 Planning interactif de Lud'été 2026. Ouvre-le dans ton navigateur (Safari/Chrome), pas dans l'aperçu WhatsApp, pour garder tes favoris.";
+    if (navigator.share) {
+      try { await navigator.share({ title: "Planning Lud'été 2026", text, url }); } catch (e) {}
+      return;
+    }
+    try { await navigator.clipboard.writeText(text + " " + url); toast("🔗 Lien copié ! Colle-le où tu veux (WhatsApp, mail…)."); }
+    catch (e) {
+      try { const ta = document.createElement("textarea"); ta.value = text + " " + url; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast("🔗 Lien copié !"); }
+      catch (e2) { toast(url); }
+    }
+  });
+  const APP_FILE = "planning-mensa-ludete-2026_2026-07-05_v146.html";
+  // Détecte les navigateurs intégrés (Messenger, WhatsApp, Instagram…) où le téléchargement est bloqué
+  function inAppBrowser() { return /FBAN|FBAV|FB_IAB|Instagram|Messenger|WhatsApp|Line\/|MicroMessenger/i.test(navigator.userAgent || ""); }
+  $("#dlAppBtn") && $("#dlAppBtn").addEventListener("click", async () => {
+    if (inAppBrowser()) {
+      toast("⚠️ Ouvre d'abord l'appli dans Safari ou Chrome (pas dans l'aperçu WhatsApp/Messenger), puis retélécharge.");
+      return;
+    }
+    let html = null;
+    // 1) copie propre depuis le site (si en ligne)
+    try { const res = await fetch(location.href, { cache: "no-store" }); if (res.ok) html = await res.text(); } catch (e) {}
+    // 2) repli : copie du document courant (marche aussi ouvert en fichier local)
+    if (!html) html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+    try {
+      const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
+      const a = document.createElement("a");
+      a.href = url; a.download = APP_FILE;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+      toast("💾 Téléchargement lancé. S'il ne démarre pas, utilise le menu du navigateur → « Enregistrer la page ».");
+    } catch (e) {
+      toast("Utilise le menu de ton navigateur → « Enregistrer la page » pour l'avoir hors-ligne.");
+    }
+  });
   $("#exportBtn").addEventListener("click", exportData);
   $("#importBtn").addEventListener("click", () => $("#importFile").click());
   $("#importFile").addEventListener("change", e => {
@@ -3904,10 +4094,24 @@
     if (e.target.closest("[data-serhelp-ok]")) { closeModal(); }
   });
   // Planning surprise (cockpit + états vides)
-  $("#surpriseBtn").addEventListener("click", openRandomPlanner);
+  $("#surpriseBtn").addEventListener("click", () => openRandomPlanner("both"));
   document.body.addEventListener("click", e => {
-    if (e.target.closest("[data-surprise]")) openRandomPlanner();
+    const s = e.target.closest("[data-surprise]"); if (s) openRandomPlanner(s.dataset.surprise);
   });
+
+  // Bouton "remonter en haut" : visible au défilement, calé au-dessus de "Replier" s'il est là
+  (() => {
+    const btt = $("#backTop"); if (!btt) return;
+    const pfVisible = () => { const f = $("#periodsFab"); return !!f && !f.classList.contains("hidden") && getComputedStyle(f).display !== "none"; };
+    function upd() {
+      const show = window.scrollY > 400;
+      btt.classList.toggle("hidden", !show);
+      if (show) btt.style.bottom = pfVisible() ? "84px" : "24px";
+    }
+    window.addEventListener("scroll", upd, { passive: true });
+    btt.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    upd();
+  })();
 
   // ---------- Init ----------
   renderExplore();
@@ -3932,9 +4136,27 @@
   applyPrefs();
   document.querySelectorAll("#layoutSeg button").forEach(x => x.classList.toggle("active", x.dataset.layout === curLayout));
   updateBadges();
+  // Planning indicatif : état replié mémorisé (les deux notes synchronisées)
+  document.querySelectorAll("details.plan-note").forEach(d => {
+    d.open = !planNoteClosed;
+    d.addEventListener("toggle", () => {
+      const closed = !d.open;
+      try { closed ? localStorage.setItem("ludete2026_plannote_closed", "1") : localStorage.removeItem("ludete2026_plannote_closed"); } catch (e) {}
+      document.querySelectorAll("details.plan-note").forEach(o => { if (o !== d) o.open = d.open; });
+    });
+  });
+  // Astuce rotation : croix de fermeture (ne plus afficher)
+  $("#rotateHintX") && $("#rotateHintX").addEventListener("click", () => {
+    rotateHintDismissed = true;
+    $("#rotateHint").classList.add("dismissed");
+    try { localStorage.setItem("ludete2026_seenrotate", "1"); } catch (e) {}
+  });
+  { const nl = $("#nowLine"); if (nl) nl.classList.toggle("hidden", !eventIsNow()); }
   setTab(prefs.home === "prog" ? "prog" : "infos");
   // Premier lancement : on propose le petit tuto
   try { if (!localStorage.getItem(LS_TOUR)) setTimeout(openTour, 450); } catch (e) {}
 </script>
+<!-- Statistiques de visites (GoatCounter) : anonyme, sans cookie ; échoue en silence hors-ligne -->
+<script data-goatcounter="https://ludete.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
