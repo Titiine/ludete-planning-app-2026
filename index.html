@@ -1148,7 +1148,7 @@
     </div>
 
     <div class="filters" id="filters"></div>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.</div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<br><span style="font-size:.82em;color:var(--muted)">Planning principal : export du 06/07/2026 à 11h30. Planning extérieur : export du 05/07/2026 à 19h06.</span></div></details>
     <p class="rotate-hint print-hide" id="rotateHint"><span>📱↻ Astuce : tournez le téléphone à l'horizontale pour voir les colonnes en grand.</span><button class="hint-x" id="rotateHintX" title="Ne plus afficher" aria-label="Fermer">×</button></p>
     <div id="progContent" class="list"></div>
   </section>
@@ -1171,7 +1171,7 @@
     </label>
     <div class="filters print-hide" id="roomsFilters"></div>
     <p class="rg-hint print-hide">🧒 ajoute au <strong>programme enfant</strong> · ⭐ ajoute à <strong>mon agenda</strong> - un bouton allumé = déjà ajouté.</p>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.</div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<br><span style="font-size:.82em;color:var(--muted)">Planning principal : export du 06/07/2026 à 11h30. Planning extérieur : export du 05/07/2026 à 19h06.</span></div></details>
     <div id="roomsContent"></div>
   </section>
   <div class="hscroll print-hide" id="hscroll" title="Faire défiler les salles vers la gauche ou la droite"><div class="hthumb" id="hthumb"></div></div>
@@ -1494,11 +1494,43 @@
 
     <div class="info-card" id="versionCard">
       <h2 data-rail="Version">🗓️ Version du planning</h2>
-      <p style="font-size:.86rem;margin:4px 0 8px">Cette appli suit le <strong>planning Tignespace du <span id="planningVer">01/07/2026</span></strong>. Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été <strong>ajoutées</strong> par rapport à la version précédente de l'appli.</p>
+      <p style="font-size:.86rem;margin:4px 0 8px">Cette appli suit le <strong>planning Tignespace du <span id="planningVer">06/07/2026</span></strong> et le <strong>planning extérieur du 05/07/2026</strong>. Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été <strong>ajoutées lundi soir</strong> par rapport à la version précédente de l'appli.</p>
       <details class="upd-note"><summary>🔄 <strong>Mises à jour</strong>&nbsp;: tes favoris sont toujours conservés.</summary><div class="upd-body">Le planning est mis à jour dès qu'une nouvelle version nous est transmise (au mieux le soir pour le lendemain). Des changements de dernière minute décidés sur place peuvent ne pas encore y figurer.</div></details>
       <details class="faq-section"><summary>Voir les <strong id="newCount">0</strong> ajouts de cette version</summary>
         <div style="margin:8px 0"><button class="cta-btn" data-goto-new>🆕 Les voir dans le Planning</button></div>
         <div id="newActs" style="font-size:.85rem;line-height:1.5"></div>
+      </details>
+      <details class="faq-section"><summary>📋 Détail des ajouts de la mise à jour du 06/07 (jours à venir)</summary>
+        <p style="font-size:.8rem;color:var(--muted);margin:6px 0">Uniquement des <strong>ajouts</strong> (aucune suppression ni changement d'horaire détecté). Sessions ajoutées au planning principal pour les jours à venir&nbsp;:</p>
+        <div style="overflow-x:auto">
+          <table style="border-collapse:collapse;font-size:.8rem;width:100%">
+            <thead><tr style="text-align:left;color:var(--muted)">
+              <th style="padding:3px 8px 3px 0">Session</th><th style="padding:3px 8px 3px 0;white-space:nowrap">Heure</th><th style="padding:3px 8px 3px 0">Salle</th><th style="padding:3px 0">Animateur</th>
+            </tr></thead>
+            <tbody>
+              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Mardi 07/07</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Yin Yoga</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Ruby</td><td style="padding:2px 0">Anne Bibé (18+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">GAMATHON</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Bompastor</td><td style="padding:2px 0">J. &amp; N. GRANDJANNY</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Tango relationnel</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Grospiron-droite</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
+              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Mercredi 08/07</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Relaxation par le dessin (Zentangle)</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h00-10h00</td><td style="padding:2px 8px 2px 0">Landreau</td><td style="padding:2px 0">Frédérique LOUDIN (16+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">GAMATHON</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Bompastor</td><td style="padding:2px 0">J. &amp; N. GRANDJANNY</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Entretien d'embauche (atelier)</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h30</td><td style="padding:2px 8px 2px 0">Landreau</td><td style="padding:2px 0">Ioulia MIKAÏLOFF (18+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Au-delà de Maslow</td><td style="padding:2px 8px 2px 0;white-space:nowrap">19h00-20h00</td><td style="padding:2px 8px 2px 0">Auditorium</td><td style="padding:2px 0">François-Joseph VELLA</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Présentation du Fandom Furry</td><td style="padding:2px 8px 2px 0;white-space:nowrap">19h00-20h30</td><td style="padding:2px 8px 2px 0">Grospiron-gauche</td><td style="padding:2px 0">Corantin Dion</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
+              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Jeudi 09/07</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">KPOP</td><td style="padding:2px 8px 2px 0;white-space:nowrap">11h00-12h30</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Eloïse GALY (10+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Danse renaissance</td><td style="padding:2px 8px 2px 0;white-space:nowrap">14h00-15h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Domitille BELLOT (12+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Danse contact impro</td><td style="padding:2px 8px 2px 0;white-space:nowrap">15h00-16h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
+              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Vendredi 10/07</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
+              <tr><td style="padding:2px 8px 2px 0">Jam guidée</td><td style="padding:2px 8px 2px 0;white-space:nowrap">21h00-24h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
+            </tbody>
+          </table>
+        </div>
       </details>
     </div>
 
@@ -1507,6 +1539,21 @@
       <details class="faq"><summary id="whatsNewTitle">Quoi de neuf&nbsp;?</summary>
         <ul class="info-list" id="whatsNew" style="margin-top:6px"></ul>
         <button class="ghost-btn" id="changelogBtn" style="margin-top:10px">➕ Voir l'historique des versions</button>
+        <details class="faq" style="margin-top:10px"><summary>🔢 Correspondance des versions publiques</summary>
+          <div style="overflow-x:auto;margin-top:6px">
+            <table style="border-collapse:collapse;font-size:.82rem;width:100%">
+              <thead><tr style="text-align:left;color:var(--muted)">
+                <th style="padding:3px 8px 3px 0">Version</th><th style="padding:3px 8px 3px 0">Date</th><th style="padding:3px 0">Ce qui change</th>
+              </tr></thead>
+              <tbody>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">04/07/2026</td><td style="padding:3px 0">Première version (test, un seul retour).</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">05/07/2026</td><td style="padding:3px 0">Version diffusée à l'ensemble des participants.</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.2</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026</td><td style="padding:3px 0">Ajout des activités extérieures (rafting, trail, cosmo-tellurique, pleine conscience, « Immersion », « Pigments »).</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.3</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026</td><td style="padding:3px 0">Planning extérieur enrichi (randonnées guidées quotidiennes) et mise à jour depuis les exports du 05-06/07.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
       </details>
     </div>
 
@@ -1600,7 +1647,7 @@
 
     <p class="madeby">Made with <span class="heart">❤</span> by Titiine <span style="color:var(--muted);font-size:.82em">(8467)</span></p>
     <p style="text-align:center;margin:4px 0 0"><a href="#" id="licLink" style="color:var(--muted);font-size:.78rem;text-decoration:underline">📜 License</a></p>
-    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v148 - 2026-07-05</p>
+    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v151 - 2026-07-06</p>
   </section>
 
 </div>
@@ -1894,13 +1941,41 @@
     { id:"s6-11", day:6, start:"18:00", end:"18:30", title:"Futsal pour Enfants", cat:"sport", room:"Plateau sportif", anim:"Cherche organisateur", max:0, age:"", desc:"Plateau sportif" },
     { id:"s6-12", day:6, start:"21:00", end:"21:30", title:"Soirée dansante", cat:"musique", room:"Lounge", anim:"Victor DEUNETTE", max:0, age:"", desc:"Dans le lounge jusqu'à 02h00." },
 
-    /* Activités extérieures (planning extérieur) */
-    { id:"ext-01", day:3, start:"07:00", end:"14:00", title:"Descente de l'Isère en rafting", cat:"sport", room:"Extérieur", anim:"Nicolas NAVIER", max:0, age:"12+", new:true, desc:"Descente de l'Isère en rafting. Départ 7h00 (à confirmer)." },
-    { id:"ext-02", day:3, start:"09:00", end:"13:30", title:"Visite d'un lieu cosmo-tellurique", cat:"sport", room:"Extérieur", anim:"Vincent ELOUARD", max:8, age:"18+", new:true, desc:"Ressenti d'énergie sur un lieu fort situé au-dessus du Val Claret. La balade permet de se décharger d'éventuelles émotions négatives et de se recentrer." },
-    { id:"ext-03", day:3, start:"09:00", end:"11:00", title:"Initiation au trail", cat:"sport", room:"Extérieur", anim:"Laurent MARTIN, Martine MEJRI", max:20, age:"18+", new:true, desc:"Boucle de 6 km / +273 m de dénivelé positif, à répéter 1, 2 ou 3 fois selon les participants." },
-    { id:"ext-04", day:4, start:"10:00", end:"12:00", title:"Pleine conscience en nature", cat:"sport", room:"Extérieur", anim:"Louanne GALIANA", max:10, age:"16+", new:true, desc:"Un atelier guidé sur la pleine conscience en nature pour se reconnecter à soi et au moment présent." },
-    { id:"ext-05", day:5, start:"10:00", end:"12:00", title:"Initiation verticale « Immersion »", cat:"sport", room:"Extérieur", anim:"Cie CirkVOST", max:0, age:"12+", new:true, desc:"Atelier d'initiation verticale. Animation externe, dès 12 ans et bonne condition physique exigée. Avec la Cie CirkVOST." },
-    { id:"ext-06", day:5, start:"19:00", end:"21:00", title:"Cirque aérien « Pigments »", cat:"tempsfort", room:"Amphithéâtre du lac", anim:"Cie CirkVOST", max:0, age:"", new:true, desc:"Spectacle de cirque aérien à l'amphithéâtre du lac, avec la Cie CirkVOST." },
+    /* Nouvelles sessions du planning principal (export Tignespace du 06/07/2026) - jours à venir */
+    { id:"u3-01", day:3, start:"09:30", end:"11:00", title:"Yin Yoga", cat:"sport", room:"Ruby", anim:"Anne Bibé", max:6, age:"18+", new:true, desc:"Séance de Yin Yoga." },
+    { id:"u3-02", day:3, start:"09:30", end:"11:00", title:"GAMATHON", cat:"jeux", room:"Bompastor", anim:"Julien, Nicolas GRANDJANNY", max:0, age:"", new:true, desc:"Marathon de jeux mathématiques." },
+    { id:"u3-03", day:3, start:"17:00", end:"18:00", title:"Tango relationnel", cat:"musique", room:"Grospiron-droite", anim:"Nathalie MANN", max:30, age:"18+", new:true, desc:"Danse : tango relationnel." },
+    { id:"u3-04", day:3, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
+    { id:"u4-01", day:4, start:"09:00", end:"10:00", title:"Relaxation par le dessin - Zentangle", cat:"atelier", room:"Landreau", anim:"Frédérique LOUDIN", max:10, age:"16+", new:true, desc:"Atelier de relaxation par le dessin (Zentangle)." },
+    { id:"u4-02", day:4, start:"09:30", end:"11:00", title:"GAMATHON", cat:"jeux", room:"Bompastor", anim:"Julien, Nicolas GRANDJANNY", max:0, age:"", new:true, desc:"Marathon de jeux mathématiques." },
+    { id:"u4-03", day:4, start:"17:00", end:"18:30", title:"Mettre toutes les chances de son côté lors d'un entretien d'embauche", cat:"atelier", room:"Landreau", anim:"Ioulia MIKAÏLOFF", max:12, age:"18+", new:true, desc:"Atelier pratique pour optimiser un entretien d'embauche." },
+    { id:"u4-04", day:4, start:"19:00", end:"20:00", title:"Au-delà de Maslow : les 3 dimensions de nos besoins", cat:"conf", room:"Auditorium", anim:"François-Joseph VELLA", max:0, age:"", new:true, desc:"Ce qui nous fait vraiment agir : matériel, psychologique, social." },
+    { id:"u4-05", day:4, start:"19:00", end:"20:30", title:"Présentation du Fandom Furry", cat:"conf", room:"Grospiron-gauche", anim:"Corantin Dion", max:0, age:"", new:true, desc:"Le Furry, son univers d'animaux anthropomorphiques." },
+    { id:"u4-06", day:4, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
+    { id:"u5-01", day:5, start:"11:00", end:"12:30", title:"KPOP", cat:"musique", room:"Multisport", anim:"Eloïse GALY", max:5, age:"10+", new:true, desc:"Apprendre une danse K-pop et à improviser sur une musique." },
+    { id:"u5-02", day:5, start:"14:00", end:"15:00", title:"Danse renaissance", cat:"musique", room:"Multisport", anim:"Domitille BELLOT", max:0, age:"12+", new:true, desc:"Initiation à la danse renaissance." },
+    { id:"u5-03", day:5, start:"15:00", end:"16:00", title:"Danse contact impro", cat:"musique", room:"Multisport", anim:"Nathalie MANN", max:30, age:"18+", new:true, desc:"Danse contact improvisation." },
+    { id:"u5-04", day:5, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
+    { id:"u6-01", day:6, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
+    { id:"u6-02", day:6, start:"21:00", end:"24:00", title:"Jam guidée", cat:"musique", room:"Multisport", anim:"Nathalie MANN", max:0, age:"18+", new:true, desc:"Jam musicale guidée." },
+
+    /* Activités extérieures (planning extérieur du 05/07/2026) */
+    { id:"ext-01", day:1, start:"10:00", end:"12:00", title:"Randonnée d'accueil", cat:"sport", room:"Extérieur", anim:"Julien WEYER", max:0, age:"", new:true, desc:"Randonnée d'accueil. Départ 10h devant l'office du tourisme." },
+    { id:"ext-02", day:2, start:"08:00", end:"11:00", title:"Randonnée des marmottes", cat:"sport", room:"Extérieur", anim:"Philippe MOULIN", max:0, age:"", new:true, desc:"Randonnée des marmottes. Départ 8h à la gare routière." },
+    { id:"ext-03", day:2, start:"08:00", end:"11:00", title:"Randonnée du lac de Tignes", cat:"sport", room:"Extérieur", anim:"David CALAME", max:12, age:"", new:true, desc:"Randonnée faune, surtout oiseaux, avec de nombreux arrêts pour observation. Départ 8h devant l'office du tourisme." },
+    { id:"ext-04", day:2, start:"08:30", end:"13:30", title:"Randonnée du refuge de la Martin", cat:"sport", room:"Extérieur", anim:"Manuel PARENT", max:0, age:"", new:true, desc:"Départ 8h30 devant l'office du tourisme." },
+    { id:"ext-05", day:3, start:"07:00", end:"14:00", title:"Descente de l'Isère en rafting", cat:"sport", room:"Extérieur", anim:"Nicolas NAVIER", max:0, age:"12+", new:true, desc:"Descente de l'Isère en rafting. Départ 7h00 (à confirmer)." },
+    { id:"ext-06", day:3, start:"08:00", end:"15:00", title:"Randonnée du Bois de la Laye", cat:"sport", room:"Extérieur", anim:"David CALAME", max:12, age:"", new:true, desc:"Sentier découverte du Bois de la Laye. Randonnée faune, surtout oiseaux, avec de nombreux arrêts pour observation. Départ 8h devant l'office du tourisme." },
+    { id:"ext-07", day:3, start:"09:00", end:"13:30", title:"Visite d'un lieu cosmo-tellurique", cat:"sport", room:"Extérieur", anim:"Vincent ELOUARD", max:8, age:"18+", new:true, desc:"Ressenti d'énergie sur un lieu fort situé au-dessus du Val Claret. La balade permet de se décharger d'éventuelles émotions négatives et de se recentrer." },
+    { id:"ext-08", day:3, start:"09:00", end:"11:00", title:"Randonnée du refuge du Palet", cat:"sport", room:"Extérieur", anim:"Gilles CAHN", max:0, age:"", new:true, desc:"Boucle refuge du Palet et col de la Tourne. Départ 9h devant l'office du tourisme." },
+    { id:"ext-09", day:3, start:"09:00", end:"11:00", title:"Initiation au trail", cat:"sport", room:"Extérieur", anim:"Laurent MARTIN, Martine MEJRI", max:20, age:"18+", new:true, desc:"Boucle de 6 km / +273 m de dénivelé positif, à répéter 1, 2 ou 3 fois selon les participants." },
+    { id:"ext-10", day:4, start:"08:00", end:"12:00", title:"Randonnée de Tignes-les-Boisses", cat:"sport", room:"Extérieur", anim:"David CALAME", max:12, age:"", new:true, desc:"Randonnée faune, surtout oiseaux, avec de nombreux arrêts pour observation. Départ 8h devant l'office du tourisme." },
+    { id:"ext-11", day:4, start:"09:00", end:"13:30", title:"Randonnée du Bois de la Laye au Pas de la Tovière", cat:"sport", room:"Extérieur", anim:"Laure BOUVRY", max:0, age:"", new:true, desc:"Départ 9h devant l'office du tourisme." },
+    { id:"ext-12", day:4, start:"10:00", end:"12:30", title:"Pleine conscience en nature + Yin Yoga", cat:"sport", room:"Extérieur", anim:"Louanne GALIANA, Anne Bibé", max:10, age:"16+", new:true, desc:"Un atelier guidé sur la pleine conscience en nature pour se reconnecter à soi et au moment présent." },
+    { id:"ext-13", day:5, start:"08:00", end:"14:00", title:"Randonnée de Prariond (Val d'Isère)", cat:"sport", room:"Extérieur", anim:"David CALAME", max:12, age:"", new:true, desc:"Randonnée faune : oiseaux, et recherche de marmottes, bouquetins et chamois, avec de nombreux arrêts pour observation. Départ 8h15 devant la gare routière de Tignes 2010." },
+    { id:"ext-14", day:5, start:"09:00", end:"13:00", title:"Randonnée de l'Aiguille Percée", cat:"sport", room:"Extérieur", anim:"Anne-Marie Peltier", max:0, age:"", new:true, desc:"Départ 9h devant l'office du tourisme." },
+    { id:"ext-15", day:5, start:"10:00", end:"12:00", title:"Initiation verticale « Immersion »", cat:"sport", room:"Extérieur", anim:"Cie CirkVOST", max:0, age:"12+", new:true, desc:"Atelier d'initiation verticale. Animation externe, dès 12 ans et bonne condition physique exigée. Avec la Cie CirkVOST." },
+    { id:"ext-16", day:5, start:"19:00", end:"21:00", title:"Cirque aérien « Pigments »", cat:"tempsfort", room:"Amphithéâtre du lac", anim:"Cie CirkVOST", max:0, age:"", new:true, desc:"Spectacle de cirque aérien à l'amphithéâtre du lac, avec la Cie CirkVOST." },
   ];
 
 /* ============================================================
@@ -2760,8 +2835,17 @@
   }
 
   const CHANGELOG = [
-    ["v148 - actuelle", [
-      "Ajout des activités extérieures (planning extérieur) : rafting sur l'Isère, visite d'un lieu cosmo-tellurique, initiation au trail, pleine conscience en nature, initiation verticale « Immersion » et cirque aérien « Pigments ».",
+    ["v151 - actuelle", [
+      ["Carte Version : les deux dates d'export sont précisées (planning principal du 06/07, planning extérieur du 05/07) et un tableau dépliable liste le détail des ajouts de la mise à jour (jours à venir).", "infos:versionCard"],
+    ]],
+    ["v150", [
+      "Planning principal mis à jour (export Tignespace du 06/07/2026) : ajout des nouvelles sessions des jours à venir (Yin Yoga, GAMATHON, Yoga rigolo en extérieur, Tango relationnel, Relaxation Zentangle, Au-delà de Maslow, Fandom Furry, KPOP, Danse renaissance, Danse contact impro, Jam guidée, etc.).",
+    ]],
+    ["v149", [
+      "Planning extérieur mis à jour (export du 05/07/2026) : ajout des randonnées guidées quotidiennes (randonnée d'accueil, marmottes, lac de Tignes, refuges du Palet et de la Martin, Bois de la Laye, Tignes-les-Boisses, aiguille percée, Prariond) en plus des activités déjà présentes ; « Pleine conscience en nature » devient « Pleine conscience + Yin Yoga » (10h00-12h30).",
+    ]],
+    ["v148", [
+      "Ajout des activités extérieures, ingérées depuis le planning extérieur du 28/06/2026 : rafting sur l'Isère, visite d'un lieu cosmo-tellurique, initiation au trail, pleine conscience en nature, initiation verticale « Immersion » et cirque aérien « Pigments ».",
     ]],
     ["v147", [
       ["Nouvelle carte « 📣 Annonces » (Infos) : affiche les mises à jour de dernière minute publiées dans les Discussions GitHub de l'appli (en ligne uniquement).", "infos:newsCard"],
@@ -4013,7 +4097,7 @@
       catch (e2) { toast(url); }
     }
   });
-  const APP_FILE = "planning-mensa-ludete-2026_2026-07-05_v148.html";
+  const APP_FILE = "planning-mensa-ludete-2026_2026-07-06_v151.html";
   // Détecte les navigateurs intégrés (Messenger, WhatsApp, Instagram…) où le téléchargement est bloqué
   function inAppBrowser() { return /FBAN|FBAV|FB_IAB|Instagram|Messenger|WhatsApp|Line\/|MicroMessenger/i.test(navigator.userAgent || ""); }
   $("#dlAppBtn") && $("#dlAppBtn").addEventListener("click", async () => {
