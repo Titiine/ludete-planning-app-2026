@@ -563,6 +563,13 @@
   .upd-note > summary::after { content: "▸"; position: absolute; right: 2px; top: 0; transition: transform .18s; }
   .upd-note[open] > summary::after { transform: rotate(90deg); }
   .upd-note .upd-body { margin-top: 4px; }
+  /* Carte Annonces (alimentée par les Discussions GitHub via news.json) */
+  .news-sub { font-size: 0.82rem; color: var(--muted); margin: 4px 0 10px; line-height: 1.4; }
+  .news-item { border-left: 3px solid var(--gold); background: var(--ivory); border-radius: 8px; padding: 8px 11px; margin: 0 0 8px; }
+  .news-meta { font-size: 0.68rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 3px; }
+  .news-body { font-size: 0.86rem; line-height: 1.45; color: var(--ink); }
+  .news-link { display: inline-block; margin: 2px 0 6px; font-family: var(--sans); font-weight: 700; font-size: 0.84rem; color: var(--sage-deep); text-decoration: underline; text-underline-offset: 3px; }
+  .news-foot { font-size: 0.72rem; color: var(--muted); margin: 2px 0 0; }
   .rotate-hint {
     display: none; align-items: center; gap: 8px; margin: 0 0 12px;
     background: var(--gold-soft); border: 1px solid var(--gold); color: var(--gold-deep);
@@ -1370,6 +1377,13 @@
       </div>
       </details>
     </div>
+    <div class="info-card" id="newsCard" hidden>
+      <h2 data-rail="Annonces">📣 Annonces</h2>
+      <p class="news-sub">Changements de salle, d'horaire, sorties… au fil de l'événement. <strong>Officieux</strong>&nbsp;: ces infos ne sont pas dans l'agenda officiel, elles sont affichées ici à titre informatif.</p>
+      <div id="newsList"></div>
+      <a class="news-link" id="newsMore" href="https://github.com/Titiine/ludete-planning-app-2026/discussions" target="_blank" rel="noopener">✍️ Voir / poster une annonce ↗</a>
+      <p class="news-foot">N'importe qui peut en poster&nbsp;: ça se passe sur la page GitHub de l'appli (compte GitHub gratuit).</p>
+    </div>
     <div class="info-card">
       <h2 data-rail="Cockpit">🎛️ Ton cockpit</h2>
       <p style="margin-bottom:8px">Voici ton cockpit&nbsp;: passe d'un <strong>bouton à l'autre</strong> pour composer ton programme - et si besoin <strong>celui de ton enfant</strong>.</p>
@@ -1586,7 +1600,7 @@
 
     <p class="madeby">Made with <span class="heart">❤</span> by Titiine <span style="color:var(--muted);font-size:.82em">(8467)</span></p>
     <p style="text-align:center;margin:4px 0 0"><a href="#" id="licLink" style="color:var(--muted);font-size:.78rem;text-decoration:underline">📜 License</a></p>
-    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v146 - 2026-07-05</p>
+    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v148 - 2026-07-05</p>
   </section>
 
 </div>
@@ -1879,6 +1893,14 @@
     { id:"s6-04", day:6, start:"15:00", end:"15:30", title:"Photo de groupe", cat:"tempsfort", room:"Extérieur", anim:"Mensa", max:0, age:"", desc:"photo de groupe avec tous les participants en extérieur" },
     { id:"s6-11", day:6, start:"18:00", end:"18:30", title:"Futsal pour Enfants", cat:"sport", room:"Plateau sportif", anim:"Cherche organisateur", max:0, age:"", desc:"Plateau sportif" },
     { id:"s6-12", day:6, start:"21:00", end:"21:30", title:"Soirée dansante", cat:"musique", room:"Lounge", anim:"Victor DEUNETTE", max:0, age:"", desc:"Dans le lounge jusqu'à 02h00." },
+
+    /* Activités extérieures (planning extérieur) */
+    { id:"ext-01", day:3, start:"07:00", end:"14:00", title:"Descente de l'Isère en rafting", cat:"sport", room:"Extérieur", anim:"Nicolas NAVIER", max:0, age:"12+", new:true, desc:"Descente de l'Isère en rafting. Départ 7h00 (à confirmer)." },
+    { id:"ext-02", day:3, start:"09:00", end:"13:30", title:"Visite d'un lieu cosmo-tellurique", cat:"sport", room:"Extérieur", anim:"Vincent ELOUARD", max:8, age:"18+", new:true, desc:"Ressenti d'énergie sur un lieu fort situé au-dessus du Val Claret. La balade permet de se décharger d'éventuelles émotions négatives et de se recentrer." },
+    { id:"ext-03", day:3, start:"09:00", end:"11:00", title:"Initiation au trail", cat:"sport", room:"Extérieur", anim:"Laurent MARTIN, Martine MEJRI", max:20, age:"18+", new:true, desc:"Boucle de 6 km / +273 m de dénivelé positif, à répéter 1, 2 ou 3 fois selon les participants." },
+    { id:"ext-04", day:4, start:"10:00", end:"12:00", title:"Pleine conscience en nature", cat:"sport", room:"Extérieur", anim:"Louanne GALIANA", max:10, age:"16+", new:true, desc:"Un atelier guidé sur la pleine conscience en nature pour se reconnecter à soi et au moment présent." },
+    { id:"ext-05", day:5, start:"10:00", end:"12:00", title:"Initiation verticale « Immersion »", cat:"sport", room:"Extérieur", anim:"Cie CirkVOST", max:0, age:"12+", new:true, desc:"Atelier d'initiation verticale. Animation externe, dès 12 ans et bonne condition physique exigée. Avec la Cie CirkVOST." },
+    { id:"ext-06", day:5, start:"19:00", end:"21:00", title:"Cirque aérien « Pigments »", cat:"tempsfort", room:"Amphithéâtre du lac", anim:"Cie CirkVOST", max:0, age:"", new:true, desc:"Spectacle de cirque aérien à l'amphithéâtre du lac, avec la Cie CirkVOST." },
   ];
 
 /* ============================================================
@@ -2738,7 +2760,13 @@
   }
 
   const CHANGELOG = [
-    ["v146 - actuelle", [
+    ["v148 - actuelle", [
+      "Ajout des activités extérieures (planning extérieur) : rafting sur l'Isère, visite d'un lieu cosmo-tellurique, initiation au trail, pleine conscience en nature, initiation verticale « Immersion » et cirque aérien « Pigments ».",
+    ]],
+    ["v147", [
+      ["Nouvelle carte « 📣 Annonces » (Infos) : affiche les mises à jour de dernière minute publiées dans les Discussions GitHub de l'appli (en ligne uniquement).", "infos:newsCard"],
+    ]],
+    ["v146", [
       ["Carte Version : la note « Mises à jour » est repliable (l'essentiel « favoris conservés » reste visible, le détail se déplie).", "infos:versionCard"],
     ]],
     ["v145", [
@@ -3095,7 +3123,7 @@
   let railObserver = null;
   function buildInfosRail() {
     const dots = $("#railDots"); if (!dots) return;
-    const cards = [...document.querySelectorAll("#view-infos > .info-card")];
+    const cards = [...document.querySelectorAll("#view-infos > .info-card")].filter(c => !c.hidden && getComputedStyle(c).display !== "none");
     dots.innerHTML = cards.map((c, i) => {
       if (!c.id) c.id = "sec-" + i;
       const h2 = c.querySelector("h2");
@@ -3985,7 +4013,7 @@
       catch (e2) { toast(url); }
     }
   });
-  const APP_FILE = "planning-mensa-ludete-2026_2026-07-05_v146.html";
+  const APP_FILE = "planning-mensa-ludete-2026_2026-07-05_v148.html";
   // Détecte les navigateurs intégrés (Messenger, WhatsApp, Instagram…) où le téléchargement est bloqué
   function inAppBrowser() { return /FBAN|FBAV|FB_IAB|Instagram|Messenger|WhatsApp|Line\/|MicroMessenger/i.test(navigator.userAgent || ""); }
   $("#dlAppBtn") && $("#dlAppBtn").addEventListener("click", async () => {
@@ -4113,9 +4141,27 @@
     upd();
   })();
 
+  // Annonces : alimentées par un news.json généré depuis les Discussions GitHub (Action).
+  // Ne s'affiche qu'en ligne, si le fichier existe et contient des éléments. Silencieux sinon.
+  function fmtNewsDate(iso) { try { return new Date(iso).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } }
+  function newsBody(t) { return esc(String(t || "")).replace(/\n/g, "<br>"); }
+  async function loadNews() {
+    try {
+      const res = await fetch("news.json", { cache: "no-store" });
+      if (!res.ok) return;
+      const items = await res.json();
+      if (!Array.isArray(items) || !items.length) return;
+      $("#newsList").innerHTML = items.map(it =>
+        `<div class="news-item"><div class="news-meta">${esc(fmtNewsDate(it.date))}${it.author ? " · " + esc(it.author) : ""}</div><div class="news-body">${newsBody(it.text)}</div></div>`
+      ).join("");
+      const c = $("#newsCard"); if (c) { c.hidden = false; buildInfosRail(); }
+    } catch (e) {}
+  }
+
   // ---------- Init ----------
   renderExplore();
   refreshExploreMarks();
+  loadNews();
   renderWhatsNew();
   renderAnimateurs();
   renderNewActs();
