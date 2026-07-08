@@ -731,6 +731,7 @@
   .src-badge.b-maj { background: #f3d9e0; color: var(--burgundy); }
   .src-badge.b-ext { background: #dcecdc; color: var(--sage-deep); }
   .src-badge.b-u { background: #e6def2; color: var(--lavender-deep); }
+  .src-badge.b-07 { background: #d4e9f2; color: #2b6a86; }
   .src-badge.b-init { background: var(--ivory); color: var(--muted); border: 1px solid var(--line); }
   .na-day { font-weight: 700; color: var(--burgundy); margin: 8px 0 3px; font-size: .8rem; }
   .na-row { padding: 3px 0; font-size: .85rem; line-height: 1.4; }
@@ -1164,7 +1165,7 @@
     </div>
 
     <div class="filters" id="filters"></div>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>07/07/2026 à 19h15</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>08/07/2026 à 19h10</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
     <p class="rotate-hint print-hide" id="rotateHint"><span>📱↻ Astuce : tournez le téléphone à l'horizontale pour voir les colonnes en grand.</span><button class="hint-x" id="rotateHintX" title="Ne plus afficher" aria-label="Fermer">×</button></p>
     <div id="progContent" class="list"></div>
   </section>
@@ -1187,7 +1188,7 @@
     </label>
     <div class="filters print-hide" id="roomsFilters"></div>
     <p class="rg-hint print-hide">🧒 ajoute au <strong>programme enfant</strong> · ⭐ ajoute à <strong>mon agenda</strong> - un bouton allumé = déjà ajouté.</p>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>07/07/2026 à 19h15</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>08/07/2026 à 19h10</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
     <div id="roomsContent"></div>
   </section>
   <div class="hscroll print-hide" id="hscroll" title="Faire défiler les salles vers la gauche ou la droite"><div class="hthumb" id="hthumb"></div></div>
@@ -1513,10 +1514,10 @@
       <h2 data-rail="Version">🗓️ Version du planning</h2>
       <p style="font-size:.86rem;margin:4px 0 4px">Cette appli suit&nbsp;:</p>
       <ul style="font-size:.86rem;margin:0 0 8px;padding-left:18px;line-height:1.5">
-        <li>le <strong>planning Tignespace du <span id="planningVer">07/07/2026</span></strong> (export à 19h15)</li>
+        <li>le <strong>planning Tignespace du <span id="planningVer">08/07/2026</span></strong> (export à 19h10)</li>
         <li>le <strong>planning extérieur du 05/07/2026</strong> (export à 19h06)</li>
       </ul>
-      <p style="font-size:.86rem;margin:0 0 8px">Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été ajoutées au fil des mises à jour (le badge de chaque ligne en donne la date). La plus récente&nbsp;: <strong>mardi soir (v1.4)</strong>.</p>
+      <p style="font-size:.86rem;margin:0 0 8px">Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été ajoutées au fil des mises à jour (le badge de chaque ligne en donne la date). La plus récente&nbsp;: <strong>mercredi soir (v1.5)</strong>.</p>
       <details class="upd-note"><summary>🔄 <strong>Mises à jour</strong>&nbsp;: tes favoris sont toujours conservés.</summary><div class="upd-body">Le planning est mis à jour dès qu'une nouvelle version nous est transmise (au mieux le soir pour le lendemain). Des changements de dernière minute décidés sur place peuvent ne pas encore y figurer.</div></details>
       <details class="faq-section"><summary>Voir les <strong id="newCount">0</strong> ajouts de cette version</summary>
         <div id="newActs" style="font-size:.85rem;line-height:1.5"></div>
@@ -1540,6 +1541,7 @@
                 <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.2</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026<br><span style="color:var(--muted);font-size:.9em">à 07h59</span></td><td style="padding:3px 0">Ajout des activités extérieures (rafting, trail, cosmo-tellurique, pleine conscience, « Immersion », « Pigments »).</td></tr>
                 <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.3</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026<br><span style="color:var(--muted);font-size:.9em">lundi soir, à 23h59</span></td><td style="padding:3px 0">Planning extérieur enrichi (randonnées guidées quotidiennes) et mise à jour depuis les exports du 05-06/07.</td></tr>
                 <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.4</td><td style="padding:3px 8px 3px 0;white-space:nowrap">07/07/2026<br><span style="color:var(--muted);font-size:.9em">mardi soir</span></td><td style="padding:3px 0">Mise à jour depuis l'export Tignespace du 07/07 : Danse Electro, Alphabets, Loup-garou, Rencontre germanophone, Clash of code ; retrait du GAMATHON du mercredi.</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.5</td><td style="padding:3px 8px 3px 0;white-space:nowrap">08/07/2026<br><span style="color:var(--muted);font-size:.9em">mercredi soir</span></td><td style="padding:3px 0">Mise à jour depuis l'export Tignespace du 08/07 (jeudi et vendredi) : Men'chat install party, Savoir interagir, Escrime, Guérir le TDAH, Tresses brésiliennes, Modelage argile, Jeu de société au calme ; retrait de « mismatched socks party » et du montage vidéo DVR du vendredi.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1639,7 +1641,7 @@
 
     <p class="madeby">Made with <span class="heart">❤</span> by Titiine <span style="color:var(--muted);font-size:.82em">(8467)</span></p>
     <p style="text-align:center;margin:4px 0 0"><a href="#" id="licLink" style="color:var(--muted);font-size:.78rem;text-decoration:underline">📜 License</a></p>
-    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v167 - 2026-07-07</p>
+    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v169 - 2026-07-08</p>
   </section>
 
 </div>
@@ -1917,10 +1919,8 @@
     /* ===== jour 6 ===== */
     { id:"n6-01", day:6, start:"09:00", end:"09:30", title:"Sport Matinal", cat:"sport", room:"Multisport", anim:"Gregory VOGEL", max:30, age:"", desc:"Tous niveaux", new:true },
     { id:"s6-07", day:6, start:"17:00", end:"18:30", title:"Sparrings", cat:"sport", room:"Multisport", anim:"Aurélie TAYAR", max:25, age:"", desc:"entraînements au combat pieds-poings ou au sol entre pratiquants débutants ou confirmés" },
-    { id:"n6-02", day:6, start:"18:30", end:"19:00", title:"la mismatched socks party", cat:"atelier", room:"Multisport", anim:"Raphaëlle GENTNER", max:30, age:"", desc:"Un atelier \"de préparation physique et mentale à faire la fête pour introvertis !\"", new:true },
     { id:"s6-06", day:6, start:"16:00", end:"16:30", title:"Initiation à la boxe anglaise", cat:"sport", room:"Multisport", anim:"Nicolas KREGIEL", max:3, age:"16+", desc:"Je vous accueille en individuel ou en petit comité pour vous initier dans le respect aux techniques du noble art. (AUCUN coup porté à la face)" },
     { id:"n6-03", day:6, start:"10:00", end:"12:00", title:"Atelier d'écriture", cat:"atelier", room:"Bompastor", anim:"Christophe RIBOLZI", max:12, age:"", desc:"Un atelier d’écriture créative, avec plusieurs exercices guidés, pour déclencher l’imaginaire, écrire sans pression et partager autrement ses textes.", new:true },
-    { id:"n6-04", day:6, start:"15:30", end:"17:30", title:"Montage vidéo conférences Mensa avec DVR", cat:"conf", room:"Bompastor", anim:"Raphaëlle GENTNER", max:12, age:"", desc:"Viens avec ton PC pour faire du montage vidéo de conférence avec DaVinci Resolve.", new:true },
     { id:"n6-05", day:6, start:"15:30", end:"17:30", title:"La Jeune soupape de Lud'été", cat:"jeux", room:"Landreau", anim:"Anne-Sophie KRZYSZOWSKI, Laetitia Virloup", max:15, age:"", desc:"Discussion pour les ados diagnostiqués TSA ou en questionnement (jusqu'à 18/20 ans).", new:true },
     { id:"s6-08", day:6, start:"17:00", end:"17:30", title:"Atelier Jeux d’écriture", cat:"atelier", room:"Grospiron-gauche", anim:"Anne HURIET", max:14, age:"", desc:"Sans prérequis." },
     { id:"s6-09", day:6, start:"18:00", end:"20:00", title:"Atelier d'impro tous niveaux", cat:"atelier", room:"Grospiron-gauche", anim:"Willy ZAMLER", max:40, age:"", desc:"atelier d'impro pour tous les niveaux" },
@@ -1956,6 +1956,16 @@
     { id:"t7-03", day:4, start:"20:30", end:"23:30", title:"Loup-garou", cat:"jeux", room:"Multisport", anim:"Aymane Mariotte", max:20, age:"", new:true, desc:"Grande partie de Loup-garou." },
     { id:"t7-04", day:5, start:"15:00", end:"16:30", title:"Rencontre germanophone", cat:"rencontre", room:"Bompastor", anim:"Benoît DUPÉ", max:0, age:"", new:true, desc:"Rencontre organisée par le GIS Franco-allemand, ouverte à tous." },
     { id:"t7-05", day:6, start:"15:00", end:"17:00", title:"Clash of code", cat:"jeux", room:"Grospiron-gauche", anim:"Benoît BELASCO", max:20, age:"", new:true, desc:"Concours de programmation (Clash of Code)." },
+
+    /* Nouvelles sessions du planning principal (export Tignespace du 08/07/2026) - jours à venir */
+    { id:"t8-01", day:5, start:"10:00", end:"11:00", title:"Men'chat : install party", cat:"atelier", room:"Bompastor", anim:"Bruno DARCET", max:0, age:"", new:true, desc:"Men'Chat / Matrix : le nouveau réseau social de Mensa. Installation sur son téléphone." },
+    { id:"t8-02", day:5, start:"18:00", end:"19:00", title:"Savoir interagir avec différents fonctionnements", cat:"conf", room:"Grospiron-gauche", anim:"Jean-François PERCHOT", max:20, age:"", new:true, desc:"Échange autour de la façon d'interagir avec des fonctionnements différents." },
+    { id:"t8-03", day:5, start:"18:00", end:"19:00", title:"Escrime à lame courte", cat:"sport", room:"À préciser", anim:"Gauvain BECK", max:10, age:"14+", new:true, desc:"Initiation à l'escrime à lame courte." },
+    { id:"t8-04", day:5, start:"19:00", end:"23:30", title:"Jeu de société au calme", cat:"jeux", room:"À préciser", anim:"Daniel GOUJOT", max:7, age:"16+", new:true, desc:"Jeux de société dans une ambiance calme." },
+    { id:"t8-05", day:6, start:"10:30", end:"12:30", title:"Guérir le TDAH sans médicament", cat:"conf", room:"Grospiron-gauche", anim:"Alexandre OUTMIZGUINE", max:0, age:"", new:true, desc:"Conférence : guérir le TDAH sans médicament." },
+    { id:"t8-06", day:6, start:"15:00", end:"17:00", title:"Tresses brésiliennes", cat:"atelier", room:"À préciser", anim:"Sasha A", max:10, age:"10+", new:true, desc:"Atelier tresses brésiliennes." },
+    { id:"t8-07", day:6, start:"17:30", end:"19:00", title:"Modelage d'une rose en argile", cat:"atelier", room:"Landreau", anim:"Marie-France NICOSIA", max:8, age:"18+", new:true, desc:"Modelage d'une rose en argile." },
+    { id:"t8-08", day:6, start:"19:00", end:"23:30", title:"Jeu de société au calme", cat:"jeux", room:"À préciser", anim:"Daniel GOUJOT", max:7, age:"16+", new:true, desc:"Jeux de société dans une ambiance calme." },
 
     /* Activités extérieures (planning extérieur du 05/07/2026) */
     { id:"ext-01", day:1, start:"10:00", end:"12:00", title:"Randonnée d'accueil", cat:"sport", room:"Extérieur", anim:"Julien WEYER", max:0, age:"", new:true, desc:"Randonnée d'accueil. Départ 10h devant l'office du tourisme." },
@@ -2188,7 +2198,8 @@
   function updateNowBar() {
     const nl = $("#nowLine"); if (!nl) return;
     const onProgView = ["prog", "rooms", "agenda", "kid"].includes(curTab);
-    nl.classList.toggle("hidden", !(eventIsNow() && onProgView));
+    const bj = $("#backJump"), backShown = bj && !bj.classList.contains("hidden");
+    nl.classList.toggle("hidden", backShown || !(eventIsNow() && onProgView));
   }
   function renderDaybar() {
     $("#daybar").innerHTML = daybarHTML(curDay, true);
@@ -2868,7 +2879,13 @@
   }
 
   const CHANGELOG = [
-    ["v167 - actuelle", [
+    ["v169 - actuelle", [
+      "Planning principal mis à jour (export Tignespace du 08/07/2026) : ajouts jeudi (Men'chat install party, Savoir interagir, Escrime à lame courte, Jeu de société au calme) et vendredi (Guérir le TDAH sans médicament, Tresses brésiliennes, Modelage d'une rose en argile, Jeu de société au calme) ; retrait de « la mismatched socks party » et du montage vidéo DVR du vendredi. Nouveau badge « MAJ 08/07 ».",
+    ]],
+    ["v168", [
+      "Correction : le bandeau « Aller à l'heure actuelle » se masque tant que le bouton « ← Revenir où j'étais » est affiché (plus de chevauchement en haut).",
+    ]],
+    ["v167", [
       ["Quand on ouvre une liste d'ajouts dans le Planning, un bouton « ← Revenir où j'étais » ramène directement à la liste (rouverte) dans Infos.", "infos:versionCard"],
       ["Barre de filtres du Planning épurée : les puces 🆕 sont retirées, et la barre se masque en mode « ajouts » (plus lisible).", "tab:prog"],
       "« Aller à l'heure actuelle » recentre aussi la barre des jours sur le jour en cours.",
@@ -3519,6 +3536,7 @@
     jumpNavigating = true; setTab(tab); jumpNavigating = false;
     window.scrollTo(0, 0);
     $("#backJump").classList.remove("hidden");
+    updateNowBar();
   }
   $("#backJump").addEventListener("click", () => {
     const j = jumpBack; jumpBack = null;
@@ -3881,7 +3899,8 @@
   // Activités ajoutées dans cette version du planning
   // Provenance d'un ajout, déduite de son identifiant
   function srcOf(a) {
-    if (/^t7-/.test(a.id)) return { k: "j0707", cls: "b-maj", label: "MAJ 07/07" };
+    if (/^t8-/.test(a.id)) return { k: "j0808", cls: "b-maj", label: "MAJ 08/07" };
+    if (/^t7-/.test(a.id)) return { k: "j0707", cls: "b-07", label: "MAJ 07/07" };
     if (/^u\d/.test(a.id)) return { k: "j0607", cls: "b-u", label: "MAJ 06/07" };
     if (/^ext-/.test(a.id)) return { k: "ext", cls: "b-ext", label: "Extérieur 05/07" };
     return { k: "init", cls: "b-init", label: "Version initiale" };
@@ -3892,8 +3911,8 @@
   function recentNewList() { return activities.filter(a => a.new && srcOf(a).k !== "init"); }
   function recentGroups() {
     const list = recentNewList();
-    const order = ["j0707", "j0607", "ext"]; // plus récent d'abord
-    const meta = { j0707: { label: "MAJ 07/07", cls: "b-maj" }, j0607: { label: "MAJ 06/07", cls: "b-u" }, ext: { label: "Extérieur 05/07", cls: "b-ext" } };
+    const order = ["j0808", "j0707", "j0607", "ext"]; // plus récent d'abord
+    const meta = { j0808: { label: "MAJ 08/07", cls: "b-maj" }, j0707: { label: "MAJ 07/07", cls: "b-07" }, j0607: { label: "MAJ 06/07", cls: "b-u" }, ext: { label: "Extérieur 05/07", cls: "b-ext" } };
     return order.filter(k => list.some(a => srcOf(a).k === k)).map(k => ({ key: k, ...meta[k], items: list.filter(a => srcOf(a).k === k) }));
   }
   function newRows(arr, rich) {
@@ -4118,6 +4137,7 @@
       jumpNavigating = true; setTab("prog"); jumpNavigating = false;
       window.scrollTo(0, 0);
       $("#backJump").classList.remove("hidden");
+      updateNowBar();
       return;
     }
     const gt = e.target.closest("[data-goto]");
@@ -4262,7 +4282,7 @@
       catch (e2) { toast(url); }
     }
   });
-  const APP_FILE = "planning-mensa-ludete-2026_2026-07-07_v167.html";
+  const APP_FILE = "planning-mensa-ludete-2026_2026-07-08_v169.html";
   // Détecte les navigateurs intégrés (Messenger, WhatsApp, Instagram…) où le téléchargement est bloqué
   function inAppBrowser() { return /FBAN|FBAV|FB_IAB|Instagram|Messenger|WhatsApp|Line\/|MicroMessenger/i.test(navigator.userAgent || ""); }
   $("#dlAppBtn") && $("#dlAppBtn").addEventListener("click", async () => {
