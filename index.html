@@ -42,7 +42,7 @@
     font-family: var(--sans);
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     background-image:
       radial-gradient(circle at 8% 12%, var(--rose-soft) 0%, transparent 22%),
       radial-gradient(circle at 92% 88%, var(--sage-soft) 0%, transparent 22%),
@@ -187,9 +187,11 @@
   .daychip.today .dow::after { content: " ·auj"; color: var(--gold-deep); text-transform: none; letter-spacing: 0; }
   /* Colonne « Maintenant » + « Semaine » empilés, à gauche du daybar */
   /* Ligne "Aller à maintenant" : lien texte fin, sous la barre des jours (pendant l'événement) */
-  .now-line { text-align: center; margin: 6px 0 2px; }
-  .now-link { border: none; background: none; padding: 0; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; font-weight: 700; color: var(--gold-deep); text-decoration: none; }
-  .now-link:active { opacity: .6; }
+  /* Bandeau « Aller à l'heure actuelle » : collant sous les onglets, visible pendant l'événement */
+  .now-sticky { position: -webkit-sticky; position: sticky; top: 0; z-index: 40; display: flex; justify-content: center; padding: 6px 8px; background: var(--cream); border-bottom: 1px solid var(--line); }
+  .now-sticky.hidden { display: none; }
+  .now-link { border: 1px solid var(--gold); background: var(--paper); border-radius: 999px; padding: 5px 16px; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; font-weight: 700; color: var(--gold-deep); text-decoration: none; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,.08)); }
+  .now-link:active { transform: scale(.97); opacity: .85; }
   .day-lead { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; align-self: stretch; }
   .day-lead .daychip { flex: 1; min-width: 96px; margin: 0; }
   .day-lead .daychip.nowchip, .day-lead .daychip.allchip { padding: 6px 10px; }
@@ -724,6 +726,19 @@
   .recur-tab.active { background: var(--paper); border-color: var(--lavender-deep); border-bottom: 1px solid var(--paper); color: var(--lavender-deep); z-index: 1; }
   .recur-panel { border: 1px solid var(--lavender-deep); border-radius: 0 10px 10px 10px; background: var(--paper); padding: 8px 12px; }
   .recur-panel.hidden { display: none; }
+  /* Badges de provenance + lignes d'ajouts (carte Version) */
+  .src-badge { display: inline-block; font-size: .6rem; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-left: 6px; vertical-align: middle; white-space: nowrap; letter-spacing: .02em; }
+  .src-badge.b-maj { background: #f3d9e0; color: var(--burgundy); }
+  .src-badge.b-ext { background: #dcecdc; color: var(--sage-deep); }
+  .src-badge.b-u { background: #e6def2; color: var(--lavender-deep); }
+  .src-badge.b-init { background: var(--ivory); color: var(--muted); border: 1px solid var(--line); }
+  .na-day { font-weight: 700; color: var(--burgundy); margin: 8px 0 3px; font-size: .8rem; }
+  .na-row { padding: 3px 0; font-size: .85rem; line-height: 1.4; }
+  .na-meta { color: var(--muted); }
+  /* Bandeau de filtres par date (onglet Dernière mise à jour), défilant */
+  .upd-band { display: flex; gap: 6px; overflow-x: auto; padding: 2px 0 7px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .upd-fchip { flex: 0 0 auto; white-space: nowrap; border: 1px solid var(--line); background: var(--ivory); color: var(--muted); border-radius: 999px; padding: 4px 11px; font-family: var(--sans); font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+  .upd-fchip.active { background: var(--gold-deep); color: #fff; border-color: transparent; }
   /* Lien discret « tout voir dans le Planning » (dans un panneau) */
   .recur-link {
     display: inline-flex; align-items: center; gap: 5px; width: auto;
@@ -1083,7 +1098,6 @@
     </svg>
   </header>
 
-  <div class="now-line print-hide hidden" id="nowLine"><button class="now-link" id="nowLink" title="Aller au créneau en cours ou à venir aujourd'hui">📍 Aller à l'heure actuelle →</button></div>
   <div class="navwrap nav-collapsed" id="navwrap">
     <nav class="tabs" id="tabs">
       <div class="tab-side left">
@@ -1100,6 +1114,8 @@
       </div>
     </nav>
   </div>
+
+  <div class="now-sticky print-hide hidden" id="nowLine"><button class="now-link" id="nowLink" title="Aller au créneau en cours ou à venir aujourd'hui">📍 Aller à l'heure actuelle →</button></div>
 
   <!-- Menu thématique en feuille remontant du bas (ouvert par le ☰ flottant) -->
   <div class="sheet-bg hidden print-hide" id="navSheetBg"></div>
@@ -1148,7 +1164,7 @@
     </div>
 
     <div class="filters" id="filters"></div>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<br><span style="font-size:.82em;color:var(--muted)">Planning principal : export du 06/07/2026 à 11h30. Planning extérieur : export du 05/07/2026 à 19h06.</span></div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>07/07/2026 à 19h15</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
     <p class="rotate-hint print-hide" id="rotateHint"><span>📱↻ Astuce : tournez le téléphone à l'horizontale pour voir les colonnes en grand.</span><button class="hint-x" id="rotateHintX" title="Ne plus afficher" aria-label="Fermer">×</button></p>
     <div id="progContent" class="list"></div>
   </section>
@@ -1171,7 +1187,7 @@
     </label>
     <div class="filters print-hide" id="roomsFilters"></div>
     <p class="rg-hint print-hide">🧒 ajoute au <strong>programme enfant</strong> · ⭐ ajoute à <strong>mon agenda</strong> - un bouton allumé = déjà ajouté.</p>
-    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<br><span style="font-size:.82em;color:var(--muted)">Planning principal : export du 06/07/2026 à 11h30. Planning extérieur : export du 05/07/2026 à 19h06.</span></div></details>
+    <details class="plan-note print-hide" open><summary>ⓘ <strong>Planning indicatif</strong></summary><div class="pn-body">Des changements de dernière minute (horaires, salles) décidés sur place peuvent ne pas encore y figurer. En cas de doute, fie-toi aux orga et à l'affichage sur place.<ul style="font-size:.82em;color:var(--muted);margin:5px 0 0;padding-left:18px;line-height:1.45"><li>Planning principal : export du <strong>07/07/2026 à 19h15</strong>.</li><li>Planning extérieur : export du <strong>05/07/2026 à 19h06</strong>.</li></ul><div style="font-size:.82em;color:var(--muted);margin-top:5px">🔗 Plannings récupérés sur la page officielle <strong>Lud'été – activités ludétiennes</strong> (Mensa France, connexion membre)&nbsp;: <a href="https://mensa-france.net/ludete/activites-ludetiennes/" target="_blank" rel="noopener">mensa-france.net/ludete</a>.</div></div></details>
     <div id="roomsContent"></div>
   </section>
   <div class="hscroll print-hide" id="hscroll" title="Faire défiler les salles vers la gauche ou la droite"><div class="hthumb" id="hthumb"></div></div>
@@ -1358,6 +1374,7 @@
           <ul class="faq-ul">
             <li>👋 La <strong>communauté WhatsApp Lud'été</strong>, <a href="https://chat.whatsapp.com/Dq98vhv0kEkAe019QQmHXH" target="_blank" rel="noopener">ouverte à tous</a> (invité·es et membres).</li>
             <li>🧑‍🎓 <strong>17-26 ans</strong>&nbsp;? Rejoins le <a href="https://chat.whatsapp.com/FZ4KxKIkim31xueBfEGGXr?s=cl&amp;p=a&amp;mlu=4&amp;amv=0" target="_blank" rel="noopener">canal Accueil des jeunes</a>.</li>
+            <li>📱 Le <strong>groupe WhatsApp dédié à cette appli</strong> (questions, bugs, idées d'amélioration)&nbsp;: <a href="https://chat.whatsapp.com/JIY5TdY4iYMFIDw2aAD0ce" target="_blank" rel="noopener">rejoindre</a>.</li>
           </ul>
         </details>
         <details class="faq"><summary>📰 Ils en parlent</summary>
@@ -1494,43 +1511,15 @@
 
     <div class="info-card" id="versionCard">
       <h2 data-rail="Version">🗓️ Version du planning</h2>
-      <p style="font-size:.86rem;margin:4px 0 8px">Cette appli suit le <strong>planning Tignespace du <span id="planningVer">06/07/2026</span></strong> et le <strong>planning extérieur du 05/07/2026</strong>. Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été <strong>ajoutées lundi soir</strong> par rapport à la version précédente de l'appli.</p>
+      <p style="font-size:.86rem;margin:4px 0 4px">Cette appli suit&nbsp;:</p>
+      <ul style="font-size:.86rem;margin:0 0 8px;padding-left:18px;line-height:1.5">
+        <li>le <strong>planning Tignespace du <span id="planningVer">07/07/2026</span></strong> (export à 19h15)</li>
+        <li>le <strong>planning extérieur du 05/07/2026</strong> (export à 19h06)</li>
+      </ul>
+      <p style="font-size:.86rem;margin:0 0 8px">Les activités marquées <span class="newbadge">🆕 nouveau</span> ont été ajoutées au fil des mises à jour (le badge de chaque ligne en donne la date). La plus récente&nbsp;: <strong>mardi soir (v1.4)</strong>.</p>
       <details class="upd-note"><summary>🔄 <strong>Mises à jour</strong>&nbsp;: tes favoris sont toujours conservés.</summary><div class="upd-body">Le planning est mis à jour dès qu'une nouvelle version nous est transmise (au mieux le soir pour le lendemain). Des changements de dernière minute décidés sur place peuvent ne pas encore y figurer.</div></details>
       <details class="faq-section"><summary>Voir les <strong id="newCount">0</strong> ajouts de cette version</summary>
-        <div style="margin:8px 0"><button class="cta-btn" data-goto-new>🆕 Les voir dans le Planning</button></div>
         <div id="newActs" style="font-size:.85rem;line-height:1.5"></div>
-      </details>
-      <details class="faq-section"><summary>📋 Détail des ajouts de la mise à jour du 06/07 (jours à venir)</summary>
-        <p style="font-size:.8rem;color:var(--muted);margin:6px 0">Uniquement des <strong>ajouts</strong> (aucune suppression ni changement d'horaire détecté). Sessions ajoutées au planning principal pour les jours à venir&nbsp;:</p>
-        <div style="overflow-x:auto">
-          <table style="border-collapse:collapse;font-size:.8rem;width:100%">
-            <thead><tr style="text-align:left;color:var(--muted)">
-              <th style="padding:3px 8px 3px 0">Session</th><th style="padding:3px 8px 3px 0;white-space:nowrap">Heure</th><th style="padding:3px 8px 3px 0">Salle</th><th style="padding:3px 0">Animateur</th>
-            </tr></thead>
-            <tbody>
-              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Mardi 07/07</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Yin Yoga</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Ruby</td><td style="padding:2px 0">Anne Bibé (18+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">GAMATHON</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Bompastor</td><td style="padding:2px 0">J. &amp; N. GRANDJANNY</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Tango relationnel</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Grospiron-droite</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
-              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Mercredi 08/07</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Relaxation par le dessin (Zentangle)</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h00-10h00</td><td style="padding:2px 8px 2px 0">Landreau</td><td style="padding:2px 0">Frédérique LOUDIN (16+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">GAMATHON</td><td style="padding:2px 8px 2px 0;white-space:nowrap">09h30-11h00</td><td style="padding:2px 8px 2px 0">Bompastor</td><td style="padding:2px 0">J. &amp; N. GRANDJANNY</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Entretien d'embauche (atelier)</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h30</td><td style="padding:2px 8px 2px 0">Landreau</td><td style="padding:2px 0">Ioulia MIKAÏLOFF (18+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Au-delà de Maslow</td><td style="padding:2px 8px 2px 0;white-space:nowrap">19h00-20h00</td><td style="padding:2px 8px 2px 0">Auditorium</td><td style="padding:2px 0">François-Joseph VELLA</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Présentation du Fandom Furry</td><td style="padding:2px 8px 2px 0;white-space:nowrap">19h00-20h30</td><td style="padding:2px 8px 2px 0">Grospiron-gauche</td><td style="padding:2px 0">Corantin Dion</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
-              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Jeudi 09/07</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">KPOP</td><td style="padding:2px 8px 2px 0;white-space:nowrap">11h00-12h30</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Eloïse GALY (10+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Danse renaissance</td><td style="padding:2px 8px 2px 0;white-space:nowrap">14h00-15h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Domitille BELLOT (12+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Danse contact impro</td><td style="padding:2px 8px 2px 0;white-space:nowrap">15h00-16h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
-              <tr><td colspan="4" style="padding:6px 0 2px;font-weight:700;color:var(--burgundy)">Vendredi 10/07</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Yoga rigolo en extérieur</td><td style="padding:2px 8px 2px 0;white-space:nowrap">17h00-18h00</td><td style="padding:2px 8px 2px 0">Extérieur</td><td style="padding:2px 0">Thérèse CHANSON</td></tr>
-              <tr><td style="padding:2px 8px 2px 0">Jam guidée</td><td style="padding:2px 8px 2px 0;white-space:nowrap">21h00-24h00</td><td style="padding:2px 8px 2px 0">Multisport</td><td style="padding:2px 0">Nathalie MANN (18+)</td></tr>
-            </tbody>
-          </table>
-        </div>
       </details>
     </div>
 
@@ -1546,10 +1535,11 @@
                 <th style="padding:3px 8px 3px 0">Version</th><th style="padding:3px 8px 3px 0">Date</th><th style="padding:3px 0">Ce qui change</th>
               </tr></thead>
               <tbody>
-                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">04/07/2026</td><td style="padding:3px 0">Première version (test, un seul retour).</td></tr>
-                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">05/07/2026</td><td style="padding:3px 0">Version diffusée à l'ensemble des participants.</td></tr>
-                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.2</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026</td><td style="padding:3px 0">Ajout des activités extérieures (rafting, trail, cosmo-tellurique, pleine conscience, « Immersion », « Pigments »).</td></tr>
-                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.3</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026</td><td style="padding:3px 0">Planning extérieur enrichi (randonnées guidées quotidiennes) et mise à jour depuis les exports du 05-06/07.</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">04/07/2026<br><span style="color:var(--muted);font-size:.9em">heure à préciser</span></td><td style="padding:3px 0">Première version (test, un seul retour).</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.1</td><td style="padding:3px 8px 3px 0;white-space:nowrap">05/07/2026<br><span style="color:var(--muted);font-size:.9em">à 23h59</span></td><td style="padding:3px 0">Version diffusée à l'ensemble des participants.</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.2</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026<br><span style="color:var(--muted);font-size:.9em">à 07h59</span></td><td style="padding:3px 0">Ajout des activités extérieures (rafting, trail, cosmo-tellurique, pleine conscience, « Immersion », « Pigments »).</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.3</td><td style="padding:3px 8px 3px 0;white-space:nowrap">06/07/2026<br><span style="color:var(--muted);font-size:.9em">lundi soir, à 23h59</span></td><td style="padding:3px 0">Planning extérieur enrichi (randonnées guidées quotidiennes) et mise à jour depuis les exports du 05-06/07.</td></tr>
+                <tr><td style="padding:3px 8px 3px 0;font-weight:700">v1.4</td><td style="padding:3px 8px 3px 0;white-space:nowrap">07/07/2026<br><span style="color:var(--muted);font-size:.9em">mardi soir</span></td><td style="padding:3px 0">Mise à jour depuis l'export Tignespace du 07/07 : Danse Electro, Alphabets, Loup-garou, Rencontre germanophone, Clash of code ; retrait du GAMATHON du mercredi.</td></tr>
               </tbody>
             </table>
           </div>
@@ -1569,6 +1559,7 @@
         <button class="cta-btn" id="shareAppBtn">↗️ Partager l'appli</button>
         <button class="ghost-btn" id="dlAppBtn">💾 Télécharger (.html)</button>
       </div>
+      <p style="font-size:.84rem;margin:12px 0 0">💬 Une question, un bug ou une idée pour améliorer l'appli&nbsp;? Rejoins le <a href="https://chat.whatsapp.com/JIY5TdY4iYMFIDw2aAD0ce" target="_blank" rel="noopener"><strong>groupe WhatsApp dédié à l'appli</strong></a>.</p>
     </div>
 
     <div class="info-card" id="dataCard">
@@ -1599,7 +1590,8 @@
           </div>
         </div>
       </div>
-      <p style="font-size:.76rem;color:var(--muted);margin:8px 0 0">🧹 «&nbsp;Tout effacer&nbsp;» remet à zéro, <strong>pour cette page sur cet appareil</strong>, tous vos favoris <em>et</em> le pseudo gardé pour le chat. <em>Note&nbsp;: le webchat EuropNet garde aussi ton pseudo de son côté (sur chat.europnet.org)&nbsp;; pour l'oublier totalement, efface les «&nbsp;données de site&nbsp;» de chat.europnet.org dans ton navigateur.</em></p>
+      <p style="font-size:.76rem;color:var(--muted);margin:8px 0 0">🧹 «&nbsp;Tout effacer&nbsp;» remet à zéro tes favoris et le pseudo du chat, <strong>pour cette page sur cet appareil</strong>.</p>
+      <details class="faq" style="margin:4px 0 0"><summary style="font-size:.72rem;color:var(--muted)">À propos du pseudo du chat</summary><p style="font-size:.72rem;color:var(--muted);margin:5px 0 0">Le pseudo du chat n'existe que si tu as activé le chat (<strong>⚙️ Réglages</strong>). EuropNet le conserve aussi de son côté (chat.europnet.org)&nbsp;: pour l'oublier totalement, efface les «&nbsp;données de site&nbsp;» de chat.europnet.org dans ton navigateur.</p></details>
       <details class="faq-section" style="margin-top:10px"><summary>Comment exporter / importer ?</summary>
         <ol style="font-size:.85rem;color:var(--muted);line-height:1.55;margin:8px 0 0;padding-left:1.2em">
           <li><strong>Exporter</strong> télécharge un fichier nommé <code>mes-favoris-ludete-2026.json</code> contenant tous vos favoris. Rangez-le où vous voulez (mail à vous-même, cloud, AirDrop, clé USB…).</li>
@@ -1647,7 +1639,7 @@
 
     <p class="madeby">Made with <span class="heart">❤</span> by Titiine <span style="color:var(--muted);font-size:.82em">(8467)</span></p>
     <p style="text-align:center;margin:4px 0 0"><a href="#" id="licLink" style="color:var(--muted);font-size:.78rem;text-decoration:underline">📜 License</a></p>
-    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v151 - 2026-07-06</p>
+    <p style="text-align:center;color:var(--muted);font-size:.74rem;margin-top:6px">Planning Mensa · Lud'été 2026 · v167 - 2026-07-07</p>
   </section>
 
 </div>
@@ -1947,7 +1939,6 @@
     { id:"u3-03", day:3, start:"17:00", end:"18:00", title:"Tango relationnel", cat:"musique", room:"Grospiron-droite", anim:"Nathalie MANN", max:30, age:"18+", new:true, desc:"Danse : tango relationnel." },
     { id:"u3-04", day:3, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
     { id:"u4-01", day:4, start:"09:00", end:"10:00", title:"Relaxation par le dessin - Zentangle", cat:"atelier", room:"Landreau", anim:"Frédérique LOUDIN", max:10, age:"16+", new:true, desc:"Atelier de relaxation par le dessin (Zentangle)." },
-    { id:"u4-02", day:4, start:"09:30", end:"11:00", title:"GAMATHON", cat:"jeux", room:"Bompastor", anim:"Julien, Nicolas GRANDJANNY", max:0, age:"", new:true, desc:"Marathon de jeux mathématiques." },
     { id:"u4-03", day:4, start:"17:00", end:"18:30", title:"Mettre toutes les chances de son côté lors d'un entretien d'embauche", cat:"atelier", room:"Landreau", anim:"Ioulia MIKAÏLOFF", max:12, age:"18+", new:true, desc:"Atelier pratique pour optimiser un entretien d'embauche." },
     { id:"u4-04", day:4, start:"19:00", end:"20:00", title:"Au-delà de Maslow : les 3 dimensions de nos besoins", cat:"conf", room:"Auditorium", anim:"François-Joseph VELLA", max:0, age:"", new:true, desc:"Ce qui nous fait vraiment agir : matériel, psychologique, social." },
     { id:"u4-05", day:4, start:"19:00", end:"20:30", title:"Présentation du Fandom Furry", cat:"conf", room:"Grospiron-gauche", anim:"Corantin Dion", max:0, age:"", new:true, desc:"Le Furry, son univers d'animaux anthropomorphiques." },
@@ -1958,6 +1949,13 @@
     { id:"u5-04", day:5, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
     { id:"u6-01", day:6, start:"17:00", end:"18:00", title:"Yoga rigolo en extérieur", cat:"sport", room:"Extérieur", anim:"Thérèse CHANSON", max:0, age:"", new:true, desc:"Cabane de pêcheur après le petit pont au bord du lac (direction Val Claret)." },
     { id:"u6-02", day:6, start:"21:00", end:"24:00", title:"Jam guidée", cat:"musique", room:"Multisport", anim:"Nathalie MANN", max:0, age:"18+", new:true, desc:"Jam musicale guidée." },
+
+    /* Nouvelles sessions du planning principal (export Tignespace du 07/07/2026) - jours à venir */
+    { id:"t7-01", day:4, start:"12:00", end:"13:30", title:"Danse Electro", cat:"musique", room:"Multisport", anim:"Thibault RAFFAILLAC", max:30, age:"16+", new:true, desc:"Initiation à la danse électro." },
+    { id:"t7-02", day:4, start:"14:00", end:"15:30", title:"Alphabets", cat:"conf", room:"Landreau", anim:"Yves THIMISTER", max:10, age:"18+", new:true, desc:"" },
+    { id:"t7-03", day:4, start:"20:30", end:"23:30", title:"Loup-garou", cat:"jeux", room:"Multisport", anim:"Aymane Mariotte", max:20, age:"", new:true, desc:"Grande partie de Loup-garou." },
+    { id:"t7-04", day:5, start:"15:00", end:"16:30", title:"Rencontre germanophone", cat:"rencontre", room:"Bompastor", anim:"Benoît DUPÉ", max:0, age:"", new:true, desc:"Rencontre organisée par le GIS Franco-allemand, ouverte à tous." },
+    { id:"t7-05", day:6, start:"15:00", end:"17:00", title:"Clash of code", cat:"jeux", room:"Grospiron-gauche", anim:"Benoît BELASCO", max:20, age:"", new:true, desc:"Concours de programmation (Clash of Code)." },
 
     /* Activités extérieures (planning extérieur du 05/07/2026) */
     { id:"ext-01", day:1, start:"10:00", end:"12:00", title:"Randonnée d'accueil", cat:"sport", room:"Extérieur", anim:"Julien WEYER", max:0, age:"", new:true, desc:"Randonnée d'accueil. Départ 10h devant l'office du tourisme." },
@@ -2025,6 +2023,7 @@
   let favs = loadFavs();
   let curDay = prefs.progStart === "today" ? pickInitialDay() : "all";
   let curFilter = "all";
+  let recentScope = "all"; // filtre par date dans l'onglet « Dernière mise à jour »
   let curLayout = prefs.layout === "list" ? "list" : "grid"; // "grid" = Colonnes
   let periodsOpen = prefs.periodsOpen; // Matin/Après-midi/Soirée dépliés (vues frise)
   let curTab = "prog";
@@ -2151,6 +2150,20 @@
     const hay = (a.title + " " + (a.anim||"") + " " + (a.room||"") + " " + (a.desc||"") + " " + cat(a.cat).label).toLowerCase();
     return hay.includes(query);
   }
+  // Prédicats reflétant les filtres actifs (pour que « Aller à l'heure actuelle » reste dans le filtre)
+  function matchesCurFilter(a) {
+    if (curFilter === "new") return !!a.new;
+    if (curFilter === "recent") return a.new && srcOf(a).k !== "init";
+    if (curFilter.startsWith("src-")) return a.new && srcOf(a).k === curFilter.slice(4);
+    if (curFilter !== "all") return a.cat === curFilter;
+    return true;
+  }
+  function matchesRoomsFilter(a) {
+    if (kidsOnly && !kidsAllowed(a)) return false;
+    if (roomsCat === "new") return !!a.new;
+    if (roomsCat !== "all") return a.cat === roomsCat;
+    return true;
+  }
 
   function allChipHTML(activeDay) { return `<div class="daychip allchip ${activeDay==='all'?'active':''}" data-day="all">Semaine</div>`; }
   function daybarHTML(activeDay, withAll) {
@@ -2171,9 +2184,23 @@
       ? `<div class="daychip nowchip" data-nowjump title="Aller au créneau en cours ou à venir">📍 Maintenant</div>` : "";
   }
   function eventIsNow() { const t = new Date().toISOString().slice(0, 10); return DAYS.some(d => d.iso === t); }
+  // Bandeau sticky « Aller à l'heure actuelle » : visible pendant l'événement, sur les vues programme uniquement
+  function updateNowBar() {
+    const nl = $("#nowLine"); if (!nl) return;
+    const onProgView = ["prog", "rooms", "agenda", "kid"].includes(curTab);
+    nl.classList.toggle("hidden", !(eventIsNow() && onProgView));
+  }
   function renderDaybar() {
     $("#daybar").innerHTML = daybarHTML(curDay, true);
-    const nl = $("#nowLine"); if (nl) nl.classList.toggle("hidden", !eventIsNow());
+    updateNowBar();
+  }
+  // Centre la barre des jours sur le jour actif (utilisé au saut « heure actuelle »)
+  function scrollDaybarToActiveDay(barSel) {
+    const bar = $(barSel); if (!bar) return;
+    requestAnimationFrame(() => {
+      const el = bar.querySelector(".daychip.active"); if (!el) return;
+      bar.scrollTo({ left: Math.max(0, el.offsetLeft - (bar.clientWidth - el.clientWidth) / 2), behavior: "smooth" });
+    });
   }
   // Saute au jour courant puis fait défiler jusqu'au créneau en cours (ou au prochain)
   // Fait défiler jusqu'à l'activité en cours (ou à venir) du jour, dans un conteneur donné
@@ -2196,17 +2223,17 @@
   function jumpToNow() {
     const idx = pickInitialDay();
     if (curTab === "rooms") {
-      curRoomsDay = idx; renderRooms();
-      scrollToNowEl("#roomsContent", idx, kidsOnly ? kidsAllowed : null);
+      curRoomsDay = idx; renderRooms(); scrollDaybarToActiveDay("#roomsDaybar");
+      scrollToNowEl("#roomsContent", idx, matchesRoomsFilter);
     } else if (curTab === "agenda") {
-      agendaDay = idx; renderAgenda();
+      agendaDay = idx; renderAgenda(); scrollDaybarToActiveDay("#agendaDaybar");
       scrollToNowEl("#agendaContent", idx, a => favs.has(a.id));
     } else if (curTab === "kid") {
-      kidDay = idx; renderKid();
+      kidDay = idx; renderKid(); scrollDaybarToActiveDay("#kidDaybar");
       scrollToNowEl("#kidContent", idx, a => kidFavs.has(a.id));
     } else {
-      curDay = idx; curFilter = "all"; setTab("prog");
-      scrollToNowEl("#progContent", idx, null);
+      curDay = idx; setTab("prog"); scrollDaybarToActiveDay("#daybar");
+      scrollToNowEl("#progContent", idx, a => matchesCurFilter(a) && matchesQuery(a));
     }
   }
 
@@ -2225,16 +2252,20 @@
   function kidsAllowed(a) { return ageInfo(a.age).min <= 10; }
 
   function renderFilters() {
+    const fEl = $("#filters");
+    // Mode « ajouts » (arrivé via « voir les ajouts dans le Planning ») : on masque toute la barre de filtres
+    const isNewFilter = curFilter === "new" || curFilter === "recent" || curFilter.startsWith("src-");
+    if (isNewFilter) { fEl.innerHTML = ""; fEl.classList.add("hidden"); return; }
+    fEl.classList.remove("hidden");
     const used = new Set((curDay === "all" ? activities : activities.filter(a => a.day === curDay)).map(a => a.cat));
     let html = `<div class="fchip all ${curFilter==='all'?'active':''}" data-filter="all">Tout</div>`;
-    if (activities.some(a => a.new)) html += `<div class="fchip newchip ${curFilter==='new'?'active':''}" data-filter="new">🆕 Nouveautés</div>`;
     Object.keys(CATEGORIES).forEach(k => {
       if (!used.has(k)) return;
       const c = cat(k), active = curFilter === k;
       html += `<div class="fchip ${active?'active':''}" data-filter="${k}" style="${active?`background:${c.color};`:''}">
         <span class="swatch" style="background:${c.color}"></span>${esc(c.label)}</div>`;
     });
-    $("#filters").innerHTML = html;
+    fEl.innerHTML = html;
   }
 
   // Bouton favori (étoile agenda ou 🧒 programme enfant)
@@ -2336,6 +2367,8 @@
     const pool = week ? activities.slice() : activities.filter(a => a.day === curDay);
     let items = pool;
     if (curFilter === "new") items = items.filter(a => a.new);
+    else if (curFilter === "recent") items = items.filter(a => a.new && srcOf(a).k !== "init");
+    else if (curFilter.startsWith("src-")) { const key = curFilter.slice(4); items = items.filter(a => a.new && srcOf(a).k === key); }
     else if (curFilter !== "all") items = items.filter(a => a.cat === curFilter);
     items = items.filter(matchesQuery);
     const exploring = exploreFrom === "infos" && curFilter !== "all";
@@ -2835,7 +2868,57 @@
   }
 
   const CHANGELOG = [
-    ["v151 - actuelle", [
+    ["v167 - actuelle", [
+      ["Quand on ouvre une liste d'ajouts dans le Planning, un bouton « ← Revenir où j'étais » ramène directement à la liste (rouverte) dans Infos.", "infos:versionCard"],
+      ["Barre de filtres du Planning épurée : les puces 🆕 sont retirées, et la barre se masque en mode « ajouts » (plus lisible).", "tab:prog"],
+      "« Aller à l'heure actuelle » recentre aussi la barre des jours sur le jour en cours.",
+    ]],
+    ["v166", [
+      "Bandeau « Aller à l'heure actuelle » : compatibilité renforcée pour les anciens iPhone (préfixe -webkit-sticky).",
+    ]],
+    ["v165", [
+      "Correction : le bandeau « Aller à l'heure actuelle » colle enfin en haut quand on défile (un réglage de page empêchait le sticky de fonctionner).",
+      ["La liste « Voir les ajouts de cette version » se replie automatiquement quand on quitte Infos (elle repart fermée au retour).", "infos:versionCard"],
+    ]],
+    ["v164", [
+      ["Carte « Mes données » : la précision sur le pseudo du chat passe dans un repli « À propos du pseudo du chat » (chat activable dans ⚙️ Réglages ; comment l'oublier côté EuropNet).", "infos:dataCard"],
+    ]],
+    ["v162", [
+      ["Groupe WhatsApp dédié à l'appli aussi listé dans « Rester en contact ».", "infos:eventCard"],
+      "Carte « Mes données » : la note « Tout effacer » est raccourcie.",
+    ]],
+    ["v161", [
+      ["Nouveau : groupe WhatsApp dédié à l'appli (questions, bugs, idées) dans la carte « Emporter & partager ».", "infos:installCard"],
+      ["Avertissement « Planning indicatif » : lien vers la page officielle Lud'été (activités ludétiennes) d'où proviennent les plannings.", "tab:prog"],
+    ]],
+    ["v160", [
+      "« Aller à l'heure actuelle » devient un bandeau collant sous les onglets : il reste accessible quand on fait défiler, uniquement pendant l'événement et sur les vues programme (Planning, Familles, Mon agenda, Mon enfant).",
+    ]],
+    ["v159", [
+      "« Aller à l'heure actuelle » conserve désormais le filtre actif (Planning et Familles) au lieu de tout réafficher, et saute au bon créneau parmi les activités filtrées.",
+    ]],
+    ["v158", [
+      ["Onglet « Dernière mise à jour » : nouveau bandeau de filtres défilant par date (la plus récente en premier). Le bouton « Voir dans le Planning » s'adapte au filtre choisi (nombre + périmètre), et le Planning s'ouvre sur cette date précise.", "infos:versionCard"],
+    ]],
+    ["v157", [
+      ["Avertissement « Planning indicatif » : les deux dates d'export passent en liste à puces, avec la date et l'heure en gras.", "tab:prog"],
+    ]],
+    ["v156", [
+      "Planning principal mis à jour (export Tignespace du 07/07/2026) : ajout de Danse Electro, Alphabets et Loup-garou (mercredi), Rencontre germanophone (jeudi) et Clash of code (vendredi) ; retrait du GAMATHON du mercredi. Nouveau badge « MAJ 07/07 » sur ces ajouts.",
+    ]],
+    ["v155", [
+      ["Le bouton « Voir dans le Planning » est désormais dans chaque onglet et s'adapte à son périmètre : « Tout » ouvre les 106 ajouts, « Dernière mise à jour » ouvre seulement les 32 ajouts récents (nouveau filtre « 🆕 Dernière MAJ » dans le Planning).", "infos:versionCard"],
+    ]],
+    ["v154", [
+      ["Carte Version : l'intro passe en liste à puces (planning Tignespace du 06/07 à 11h30, planning extérieur du 05/07 à 19h06) et précise les versions publiques (ajouts de lundi soir 23h59 en v1.3, par rapport à v1.2 de lundi matin).", "infos:versionCard"],
+    ]],
+    ["v153", [
+      ["Carte Version : heures de déploiement renseignées dans le tableau de correspondance, et note « d'où viennent ces ajouts » passée en liste à puces repliable dans l'onglet « Dernière mise à jour ».", "infos:versionCard"],
+    ]],
+    ["v152", [
+      ["Carte Version repensée : la liste des ajouts passe en deux onglets (« Tout », avec un badge de provenance par ligne, et « Dernière mise à jour », avec le détail heure / salle / animateur). Heure de déploiement ajoutée au tableau de correspondance des versions.", "infos:versionCard"],
+    ]],
+    ["v151", [
       ["Carte Version : les deux dates d'export sont précisées (planning principal du 06/07, planning extérieur du 05/07) et un tableau dépliable liste le détail des ajouts de la mise à jour (jours à venir).", "infos:versionCard"],
     ]],
     ["v150", [
@@ -3325,7 +3408,10 @@
     $("#backInfos").classList.toggle("hidden", !show);
   }
   function setTab(v) {
+    // Replier la liste « Voir les N ajouts » quand on quitte/rouvre Infos
+    const nc = $("#newCount"); if (nc) { const d = nc.closest("details"); if (d) d.open = false; }
     showView(v);
+    updateNowBar();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -3439,6 +3525,7 @@
     $("#backJump").classList.add("hidden");
     if (!j) return;
     jumpNavigating = true; setTab(j.tab); jumpNavigating = false;
+    if (j.reopenAdds) { const d = $("#newCount") && $("#newCount").closest("details"); if (d) d.open = true; }
     requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, j.y)));
   });
 
@@ -3792,19 +3879,72 @@
   }
 
   // Activités ajoutées dans cette version du planning
+  // Provenance d'un ajout, déduite de son identifiant
+  function srcOf(a) {
+    if (/^t7-/.test(a.id)) return { k: "j0707", cls: "b-maj", label: "MAJ 07/07" };
+    if (/^u\d/.test(a.id)) return { k: "j0607", cls: "b-u", label: "MAJ 06/07" };
+    if (/^ext-/.test(a.id)) return { k: "ext", cls: "b-ext", label: "Extérieur 05/07" };
+    return { k: "init", cls: "b-init", label: "Version initiale" };
+  }
+  function srcBadge(a) { const s = srcOf(a); return `<span class="src-badge ${s.cls}">${s.label}</span>`; }
+
+  // Groupes d'ajouts récents, du plus récent au plus ancien
+  function recentNewList() { return activities.filter(a => a.new && srcOf(a).k !== "init"); }
+  function recentGroups() {
+    const list = recentNewList();
+    const order = ["j0707", "j0607", "ext"]; // plus récent d'abord
+    const meta = { j0707: { label: "MAJ 07/07", cls: "b-maj" }, j0607: { label: "MAJ 06/07", cls: "b-u" }, ext: { label: "Extérieur 05/07", cls: "b-ext" } };
+    return order.filter(k => list.some(a => srcOf(a).k === k)).map(k => ({ key: k, ...meta[k], items: list.filter(a => srcOf(a).k === k) }));
+  }
+  function newRows(arr, rich) {
+    let h = "";
+    DAYS.forEach((d, i) => {
+      const di = arr.filter(a => a.day === i).sort(byTime);
+      if (!di.length) return;
+      h += `<div class="na-day">${dayFull(i)}</div>`;
+      h += di.map(a => {
+        const meta = (rich && a.anim)
+          ? `· ${esc(a.start || "")} · ${esc(a.room || "")} · ${esc(a.anim)}`
+          : `· ${esc(a.start || "")} · ${esc(a.room || "")}`;
+        return `<div class="na-row">🆕 <strong>${esc(a.title)}</strong> <span class="na-meta">${meta}</span>${srcBadge(a)}</div>`;
+      }).join("");
+    });
+    return h || "<p style='color:var(--muted);font-size:.85rem'>Aucun ajout.</p>";
+  }
+  // Contenu de l'onglet « Dernière mise à jour » : bandeau de filtres + bouton + liste (selon recentScope)
+  function renderRecentInner() {
+    const all = recentNewList();
+    const groups = recentGroups();
+    if (recentScope !== "all" && !groups.some(g => g.key === recentScope)) recentScope = "all";
+    const shown = recentScope === "all" ? all : all.filter(a => srcOf(a).k === recentScope);
+    let band = `<div class="upd-band"><button class="upd-fchip ${recentScope === "all" ? "active" : ""}" data-rscope="all">Toutes (${all.length})</button>`;
+    groups.forEach(g => { band += `<button class="upd-fchip ${recentScope === g.key ? "active" : ""}" data-rscope="${g.key}">${g.label} (${g.items.length})</button>`; });
+    band += `</div>`;
+    const gotoVal = recentScope === "all" ? "recent" : "src-" + recentScope;
+    const btn = `<div style="margin:6px 0 8px"><button class="cta-btn" data-goto-new="${gotoVal}">🆕 Voir ${shown.length > 1 ? "ces " + shown.length + " ajouts" : "cet ajout"} dans le Planning</button></div>`;
+    return band + btn + newRows(shown, true);
+  }
+
   function renderNewActs() {
     const box = $("#newActs"); if (!box) return;
     const news = activities.filter(a => a.new);
     const cnt = $("#newCount"); if (cnt) cnt.textContent = news.length;
     if (!news.length) { box.innerHTML = "<p style='color:var(--muted)'>Aucun nouvel ajout.</p>"; return; }
-    let html = "";
-    DAYS.forEach((d, i) => {
-      const di = news.filter(a => a.day === i).sort(byTime);
-      if (!di.length) return;
-      html += `<div style="font-weight:700;color:var(--burgundy);margin:8px 0 3px">${dayFull(i)}</div>`;
-      html += di.map(a => `<div style="padding:2px 0">🆕 <strong>${esc(a.title)}</strong> <span style="color:var(--muted)">· ${esc(a.start||"")} · ${esc(a.room||"")}</span></div>`).join("");
-    });
-    box.innerHTML = html;
+    const recent = recentNewList();
+    box.innerHTML = `<div class="upd-tabs">
+      <div class="recur-tabs">
+        <button class="recur-tab active" data-updtab="all">Tout (${news.length})</button>
+        <button class="recur-tab" data-updtab="recent">Dernière mise à jour (${recent.length})</button>
+      </div>
+      <div class="recur-panel" data-updpanel="all">
+        <div style="margin:0 0 8px"><button class="cta-btn" data-goto-new="all">🆕 Voir ces ${news.length} ajouts dans le Planning</button></div>
+        ${newRows(news, false)}
+      </div>
+      <div class="recur-panel hidden" data-updpanel="recent">
+        <p style="font-size:.8rem;margin:0 0 6px"><strong>Ajouts des dernières mises à jour</strong> (filtre par date, la plus récente en premier)&nbsp;:</p>
+        <div id="recentInner">${renderRecentInner()}</div>
+      </div>
+    </div>`;
   }
 
   // ---------- Events ----------
@@ -3960,9 +4100,25 @@
     query = ""; $("#search").value = ""; $("#searchClear").classList.add("hidden"); renderProg();
   });
   document.body.addEventListener("click", e => {
-    if (e.target.closest("[data-goto-new]")) {
+    // Bandeau de filtres par date (onglet Dernière mise à jour)
+    const rsc = e.target.closest("[data-rscope]");
+    if (rsc) {
+      e.stopPropagation();
+      recentScope = rsc.dataset.rscope;
+      const inner = document.getElementById("recentInner");
+      if (inner) inner.innerHTML = renderRecentInner();
+      return;
+    }
+    const gnBtn = e.target.closest("[data-goto-new]");
+    if (gnBtn) {
       exploreFrom = null; exploreReturn = null; curDay = "all"; query = ""; $("#search").value = ""; $("#searchClear").classList.add("hidden");
-      curFilter = "new"; setTab("prog"); return;
+      const v = gnBtn.dataset.gotoNew;
+      curFilter = (v === "all") ? "new" : v; // "all"->tous les 🆕, "recent"->récents, "src-KEY"->une date
+      jumpBack = { tab: curTab, y: window.scrollY, reopenAdds: true }; // permet « ← Revenir » vers la liste des ajouts
+      jumpNavigating = true; setTab("prog"); jumpNavigating = false;
+      window.scrollTo(0, 0);
+      $("#backJump").classList.remove("hidden");
+      return;
     }
     const gt = e.target.closest("[data-goto]");
     if (gt) { goTo(gt.dataset.goto); return; }
@@ -3973,6 +4129,15 @@
       const which = rtab.dataset.recurtab, scope = rtab.closest(".serie-cat");
       scope.querySelectorAll("[data-recurtab]").forEach(x => x.classList.toggle("active", x === rtab));
       scope.querySelectorAll("[data-recurpanel]").forEach(x => x.classList.toggle("hidden", x.dataset.recurpanel !== which));
+      return;
+    }
+    // Onglets « Ajouts » de la carte Version (Tout / Dernière mise à jour)
+    const utab = e.target.closest("[data-updtab]");
+    if (utab) {
+      e.stopPropagation();
+      const which = utab.dataset.updtab, scope = utab.closest(".upd-tabs");
+      scope.querySelectorAll("[data-updtab]").forEach(x => x.classList.toggle("active", x === utab));
+      scope.querySelectorAll("[data-updpanel]").forEach(x => x.classList.toggle("hidden", x.dataset.updpanel !== which));
       return;
     }
     const ck = e.target.closest(".ck-card[data-view]");
@@ -4097,7 +4262,7 @@
       catch (e2) { toast(url); }
     }
   });
-  const APP_FILE = "planning-mensa-ludete-2026_2026-07-06_v151.html";
+  const APP_FILE = "planning-mensa-ludete-2026_2026-07-07_v167.html";
   // Détecte les navigateurs intégrés (Messenger, WhatsApp, Instagram…) où le téléchargement est bloqué
   function inAppBrowser() { return /FBAN|FBAV|FB_IAB|Instagram|Messenger|WhatsApp|Line\/|MicroMessenger/i.test(navigator.userAgent || ""); }
   $("#dlAppBtn") && $("#dlAppBtn").addEventListener("click", async () => {
@@ -4281,7 +4446,7 @@
     $("#rotateHint").classList.add("dismissed");
     try { localStorage.setItem("ludete2026_seenrotate", "1"); } catch (e) {}
   });
-  { const nl = $("#nowLine"); if (nl) nl.classList.toggle("hidden", !eventIsNow()); }
+  updateNowBar();
   setTab(prefs.home === "prog" ? "prog" : "infos");
   // Premier lancement : on propose le petit tuto
   try { if (!localStorage.getItem(LS_TOUR)) setTimeout(openTour, 450); } catch (e) {}
